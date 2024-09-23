@@ -1,0 +1,40 @@
+@import '../../../style/variables';
+@import '../../../style/mixins';
+
+nav{
+  @include transition($prop: border,$delay:.2s);
+  background-color: var(--white);
+  height: $top-nav-height;
+  border-bottom: 1px solid var(--border-light-blue);
+}
+
+.container{
+  @include flexbox($justify-content: space-between);
+
+  width: 90%;
+  margin: 0 auto;
+  height: 100%;
+
+  & img{
+    height: 100%;
+    cursor: pointer;
+  }
+}
+
+.company{
+  @include flexbox();
+  width: fit-content;
+  height: 100%;
+  gap: 10px;
+  
+  .logo{
+    width: 35px;
+    max-height: 90%;
+  }
+  .name{
+    color: lightgreen;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+  }
+
+}

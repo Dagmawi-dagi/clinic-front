@@ -1,0 +1,39 @@
+@import '../../../style/variables';
+@import '../../../style/mixins';
+
+
+.inputContainer{
+  position: relative;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 1rem;
+  font-size: 100%;
+
+  & input{
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border: 1px solid $border-light;
+    border-color: transparent;
+    background-color: #fff;
+    color: var(--dark-blue-text);
+    // outline: none;
+
+    
+    &::placeholder{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-transform: capitalize;
+    }
+  }
+
+  & .err{
+    position: absolute;
+    bottom: -.9rem;
+    left: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-height: 1rem;
+    overflow: hidden;
+    margin: 0;
+  }
+
+}

@@ -1,0 +1,18 @@
+#da-tooltip{
+  position: absolute;
+  z-index: 999999999999; // on top of any el on the screen
+
+  background-color: #333;
+  color: #fff;
+
+  padding: 5px;
+  border-radius: 3px;
+  pointer-events: none;
+
+  opacity: 0;
+
+  &.open{
+    opacity: 1;
+    transition: opacity .3s;
+  }
+}

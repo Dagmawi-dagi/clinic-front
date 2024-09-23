@@ -1,0 +1,58 @@
+@import '../../../style/variables';
+@import '../../../style/mixins';
+
+.dropdownInput-container{
+  position: relative;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.dropdownInput{
+  position: relative;
+  width: 100%;
+  padding: 10px 15px;
+  padding-right: 20px;
+  border: 1px solid $border-light;
+  border-radius: 3px;
+  background-color: var(--white-bg);
+  color:$text-input-placeholder;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+
+  & .selectIcon{
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    display: flex;
+    height: 1.2rem;
+    cursor: pointer;
+  }
+
+  & .err{
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    color: tomato;
+  }
+
+}
+
+.dropdownInputItems-container{
+  @include scrollbar;
+  @include transition($prop:onlytheme);
+  position: absolute;
+  width: 100%;
+  max-height: 0px;
+  padding:0 10px;
+
+  border: 1px  solid $border-light;
+  background-color: var(--white-bg);
+  color: var(--dark-blue-text);
+  z-index: 2;
+  cursor: pointer;
+  
+  overflow: hidden;
+
+}
