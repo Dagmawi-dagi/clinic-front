@@ -15,9 +15,10 @@ defineProps({
 const tabs = ['personal info ','address info',' medical adminstration info']
 //on omunted the indicator for active tab is not being shown .... give it some width and height
 onMounted(()=>{
-  const first_tab =  document.querySelectorAll('.m-tabs-bar__indicator')[0]
-  first_tab.style.width = '110px';
-  first_tab.style.height = '35px';
+  const active_tab_indicator =  document.querySelectorAll('.m-tabs-bar__indicator')[0]
+  const active_tab = document.querySelector('.--active.m-tabs-bar__item')
+  active_tab_indicator.style.width = `${active_tab.clientWidth}px`;
+  active_tab_indicator.style.height = `${active_tab.clientHeight}px`;
 })
 
 const a =  (evt)=>{
@@ -27,9 +28,9 @@ const a =  (evt)=>{
 </script>
 
 <template>
-  <MazTabs>
+  <MazTabs class="tabs-container">
     <MazTabsBar :items="tabs" class="tabs_bar"/>
-    <MazTabsContent>
+    <MazTabsContent >
       <MazTabsContentItem :tab="1" class="maz-py-4" >
         <p class="info">first_name  <span class="info-content">{{ pateint?.first_name }}</span></p>
         <p class="info">middle_name <span class="info-content">{{ pateint?.middle_name }}</span></p>

@@ -1,33 +1,15 @@
 <script setup>
 //comps
 import R_input_one from '../../components/form/R-input-one.vue';
-import errDisplay from '../../components/Reusable/err-display.vue';
 import custom_btn_1 from '@/components/Reusable/button/custom_btn_1.vue';
 // composables
 import { useUserInput } from '../../composables/user-input'
 import { use_apicalls_from_store } from '../../composables/store-apicalls';
-// router
-import { useRouter } from 'vue-router';
-// store 
-import { use_auth_store } from '../../stores/auth';
-import { storeToRefs } from 'pinia';
 
 const { form,onSubmitDyn } = useUserInput(login)
-const { apicall_from_store,response } = use_apicalls_from_store()
-const { logged_in_user  } = storeToRefs( use_auth_store() )
-const router = useRouter()
+const { apicall_from_store,apicall_from_store_response,apicall_from_store_loading } = use_apicalls_from_store()
 
-function login (){
-  apicall_from_store('auth','auth-login',{ onSucSaveTheJsonOn: 'logged_in_user', data:form.value })
-  .then(res=>{ 
-    response.value = res
-    if(res?.status === 200) {
-      window.localStorage.setItem('token',logged_in_user.value.token) 
-      router.push('/')
-    }
-  })
-}
-
+function login (){ apicall_from_store('auth','auth-login',{ onSucSaveTheJsonOn: 'logged_in_user', data:form.value }) }
 </script>
 
 <template>
@@ -41,7 +23,8 @@ function login (){
       :validations="['rq']"
       :validateOn="'onSubmit'"
       :onSubmitDyn="onSubmitDyn"
-      @inputVal="form.phoneNumber = $event "
+      @inputVal="form.phoneNumber = $event"
+      :pre-val="'0945065780'"
       />
       <R_input_one class="input" 
       :id="`${2}`"
@@ -52,12 +35,12 @@ function login (){
       :onSubmitDyn="onSubmitDyn"
       @inputVal="form.userPassword = $event "
       />
-      <custom_btn_1  :spinner="{color: '#fff',width: '1rem'}" :loading_state="true" @btn="onSubmitDyn = Math.random()"> LOG IN </custom_btn_1>
-      <errDisplay v-if="response?.status != 200"
-      class="err"
-      :err="response?.data.errMessage ? true : false"  
-      :err-msg="response?.data.errMessage"
-      />
+      <custom_btn_1  :spinner="{color: '#fff',width: '1rem'}" 
+      :loading_state="apicall_from_store_loading" 
+      :err-msg-display="apicall_from_store_response.errMessage"
+      @btn="onSubmitDyn = Math.random()"
+      > LOG IN </custom_btn_1>
+      
     </div>
   </div>
 </template>

@@ -49,10 +49,10 @@ const check_upload = ()=>{
 
 </script>
 <template>
-  <div class="chooseFile-container" ref="container" :id="_`${id}`">
+  <div class="chooseFile-container" ref="container" :id='`_${id}`'>
       <button type="button" @click="open"  >{{ btntext }}</button>
       <button  @click="selectedfile= null,fileUrl = null,reset(),validation_result = null " v-if="files" >cancel</button>
-      <button  @click="check_upload">check</button>
+      <button  @click="check_upload" v-if="selectedfile">view</button>
       <!-- <p> {{ fileUrl }} </p> -->
       <p  class="fileName" v-if="selectedfile">{{ single ? selectedfile.name :  [...selectedfile].map(file=>file.name) }}  </p>
       <!-- {{ validation_result }} -->

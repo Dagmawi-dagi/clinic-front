@@ -20,18 +20,22 @@ const props = defineProps({
     type: String,
     default: 'blur' // by default the input validation will be on blur
   },
+  labelDisplay: {
+    type: String,
+    default: "block"
+  }
 })
 
 const userInput = ref('')
 //if we have pre val set it on comp mounted
 onMounted(()=>{  if( props.preVal ) userInput.value = props.preVal})
 const { validate_userinput_emitval,validation_result } = useUserInput()
-// validate the user input on Submit btn
-if( props.validateOn === 'onSubmit') watch(()=>props.onSubmitDyn ,()=>{ validate_userinput_emitval( props.type === 'number' ? 'number' : 'string',userInput.value, props.placeholder ?? props.label ,props.validations,emits)})
 //validating the userinput @input 
 if(  props.validateOn === 'input') watch(userInput,()=>{ validate_userinput_emitval( props.type === 'number' ? 'number' : 'string',userInput.value,props.placeholder ?? props.label ,props.validations,emits)})
 //validating the userinput @blur
 const onblur = () =>{ if(  props.validateOn === 'blur') validate_userinput_emitval( props.type === 'number' ? 'number' : 'string',userInput.value,props.placeholder ?? props.label ,props.validations,emits)}
+// nomatter the what the props.validateOn is watch and validate on onSubmitDyn 
+watch(()=>props.onSubmitDyn ,()=>{ validate_userinput_emitval( props.type === 'number' ? 'number' : 'string',userInput.value, props.placeholder ?? props.label ,props.validations,emits)})
 // resetVal Object holds Dynamic val so that it will simulate an event then reset the value of this specific input OR all other RInputones)
 watch(()=> props.resetVal ,()=>{ 
   if( props.resetVal.id === `_${props.id}` || props.resetVal.id === 'all'  ) userInput.value = ''
@@ -40,7 +44,7 @@ watch(()=> props.resetVal ,()=>{
 
 <template>
   <div class="inputContainer" :id='`_${id}`' >
-    <label :for="`_${id}`" v-if="label" > {{ label }} </label>
+    <label :for="`_${id}`" v-if="label" :style="{display: labelDisplay}"> {{ label }} </label>
     <input :type="type"  :id='`_${id}`'  :placeholder="placeholder" v-model="userInput"  @blur="onblur">
     <errDisplay  
       v-if="validation_result"

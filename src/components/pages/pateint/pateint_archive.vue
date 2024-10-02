@@ -30,14 +30,14 @@ const raw_item  = ()=>{
   <div class="pateint-archive-container">
     <!-- {{pateint_archive?.pateint}} -->
     <div class='info-container' style="margin-top: 0;">
-      <h5  class="header" style="display: flex;">personal data
+      <h5  class="header" style="display: flex;">pateint personal data
         <span class="pateint-card">
           card
           <span class="active">active</span> 
           <span class="expired">expired</span> 
         </span>
       </h5>
-      <personal-data  :pateint="pateint_archive?.pateint" />
+      <personalData  :pateint="pateint_archive?.pateint" />
     </div>
 
     <div class='info-container'>

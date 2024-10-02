@@ -5,11 +5,13 @@
   position: relative;
   width: 90%;
   margin: auto;
+  margin-top: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text-dark-gray);
 }
 
 button{
+  @include transition($prop:( border :0.2s ));
   border-radius: 3px;
   border: 1px solid $border-light;
   background-color: #fff;
@@ -34,6 +36,7 @@ button{
 }
 
 .fileName{
+  @include transition($prop:( border :0.2s ));
   border: 1px solid var(--text-dark-gray);
   border-radius: 3px;
   padding: 5px 10px;

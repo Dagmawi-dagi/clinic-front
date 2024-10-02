@@ -9,21 +9,31 @@
   margin-bottom: 1rem;
   font-size: 100%;
 
+  label{
+    @include transition($prop:onlyTheme);
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    color: var(--text-dark-gray);
+  }
+
   & input{
+    @include transition($prop:( border: 0.2s));
     width: 100%;
     padding: 10px 15px;
     border-radius: 3px;
     border: 1px solid $border-light;
     border-color: transparent;
     background-color: #fff;
-    color: var(--dark-blue-text);
+    color: var( --text-dark-gray);
     // outline: none;
-
     
     &::placeholder{
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-transform: capitalize;
     }
+
+
   }
 
   & .err{

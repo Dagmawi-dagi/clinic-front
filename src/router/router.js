@@ -33,6 +33,9 @@ const router = createRouter({
   //   },
 
   routes: [
+
+    // -----------------user routes------------------------//
+
     {
       path:'/login',
       name:'login',
@@ -40,20 +43,31 @@ const router = createRouter({
         title: 'login', 
       },
       beforeEnter:(to,from,next)=>{
-        // if we have allready logged in user to to home
-        const { logged_in_user } = storeToRefs(use_auth_store())
-        console.log(logged_in_user.value);
-        if (logged_in_user.value ) return next('/')
+        if (window.localStorage.getItem('token') ) return next('/')
         next()
       },
       component : ()=>import ('../views/auth/login_.vue'),
     },
+
+    {
+      path:'/user-profile',
+      name:'user-profile',
+      meta:{ 
+        title: 'user-profile',
+        auth: true 
+      },
+      component : ()=>import ('../views/user/user-profile.vue'),
+    },
+
+    //---------------END of user Routes ------------------//
+
+
     {
       path:'/',
       name:'home',
       meta:{ 
         title: 'home', 
-        auth: false
+        auth: true
       },
       component : ()=>import ('../views/test_.vue'),
     },
@@ -63,7 +77,7 @@ const router = createRouter({
       name:'pateint',
       meta:{ 
         title: 'pateint', 
-        auth: false
+        auth: true
       },
       component : ()=>import ('../views/pateint/pateint_.vue'),
     },

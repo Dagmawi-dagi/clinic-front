@@ -41,7 +41,7 @@
 }
 
 .data_list :deep(.raw) {
-  @include transition($prop: border-color );
+  @include transition($prop: (border-color: 0.2s) );
   margin-top: 0;
   border: 1px solid var(--border-light-blue);
   border-left-color: var(--white);

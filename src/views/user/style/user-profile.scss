@@ -1,0 +1,37 @@
+@import '../../../style/variables';
+@import '../../../style/mixins';
+@import '../../../style/global.scss';
+
+.container{
+    @include transition($prop: onlytheme);
+    margin: 0 1rem;
+    padding: 1rem 10px;
+    background-color: var(--white);
+    height: 100vh;
+}
+
+.input{
+    margin-left: 0;
+    :deep(input){
+        background-color: var(--light-blue);
+        color: var( --text-dark-gray);
+        border: 1px solid var(--border-light-blue);
+        padding: 5px 10px;
+        width: min(90%,400px);
+    }
+}
+
+.file-input{
+    margin-left: 0;
+    :deep(button){
+        background-color: var(--light-blue);
+        color: var( --text-dark-gray);
+        border: 1px solid var(--border-light-blue);
+    }
+
+    :deep(.fileName){
+        background-color: var(--light-blue);
+        color: var( --text-dark-gray);
+        border: 1px solid var(--border-light-blue);
+    }
+}

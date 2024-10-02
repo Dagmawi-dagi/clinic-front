@@ -2,7 +2,7 @@
 @import '../../../style/mixins';
 
 nav{
-  @include transition($prop: border,$delay:.2s);
+  @include transition($prop:( border:.2s));
   background-color: var(--white);
   height: $top-nav-height;
   border-bottom: 1px solid var(--border-light-blue);
@@ -37,4 +37,25 @@ nav{
     font-weight: bolder;
   }
 
+}
+
+
+
+.search-container{
+  display: flex; 
+  flex-wrap: wrap; 
+  max-width: 800px; 
+  gap: 10px;
+}
+
+
+.input{
+  margin: unset;
+  width: 200px !important;
+  :deep(input){
+      background-color: var(--light-blue);
+      color: var( --text-dark-gray);
+      border: 1px solid var(--border-light-blue);
+      padding: 5px 10px;
+  }
 }

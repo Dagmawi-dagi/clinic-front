@@ -87,6 +87,55 @@ export const  prescroption_heads =  {
  // not from DB but from form creator
 }
 
+
+//employee
+export const  attendance_heads =  {
+  "shift" : { "width":"120px" },
+  "enterAt" : { "width":  '120px'},
+  "leaveAt" : { "width":  '120px'},
+  "seenBy" : { "width":  '120px'},
+  "createdBy":{"width": '120px'}
+}
+
+export const  contract_heads =  {
+  "begin_date" : { "width":"120px" },
+  "end_date" : { "width":  '120px'},
+  "gross_salary" : { "width":  '120px'},
+  "gross_salary_period" : { "width":  '120px'},
+  "comment":{"width": '120px'},
+  "status":{"width": '120px'},
+  "createdBy":{"width": '120px'}
+}
+
+export const  disciplinary_record_heads =  {
+  "date" : { "width":"120px" },
+  "title" : { "width":  '120px'},
+  "discription" : { "width":  '120px'},
+  "decision" : { "width":  '120px'},
+  "decision_by":{"width": '120px'}
+}
+
+export const payed_share_heads = {
+  "form_date" : { "width":"120px" },
+  "to_date" : { "width":"120px" },
+  "share_of_services_and_total_company_income_form" : { "width":"120px" },
+  "service_requests" : {"width": "120px"}
+}
+
+export const rest_leave_heads = {
+  "begin_date" : { "width":"120px" },
+  "end_date" : { "width":"120px" },
+  "duration" : { "width":"120px" },
+  "request_date" : {"width": "120px"},
+  "authorization_date" : {"width": "120px"},
+  "authorization_by" : {"width": "120px"},
+  "comment" : {"width": "120px"},
+}
+
+export const skill_heads = {
+  "skill form" : { "grow":  true },
+}
+
 export default { 
   a_heads,
   b_heads,
@@ -98,5 +147,14 @@ export default {
   health_insurance_heads,
   deposites_heads,
   credit_heads,
-  invoice_heads
+  invoice_heads,
+
+  // employee
+  attendance_heads,
+  contract_heads,
+  disciplinary_record_heads,
+  payed_share_heads,
+  rest_leave_heads,
+  skill_heads
+
 }

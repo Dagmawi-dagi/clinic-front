@@ -39,7 +39,7 @@
 }
 
 .sideNavToggler {
-  @include transition($prop: left, $delay: 0.5s);
+  @include transition($prop: (left: 0.5s));
   @include flexbox;
   background-color: var(--light-blue);
   color: var(--text-dark-gray);

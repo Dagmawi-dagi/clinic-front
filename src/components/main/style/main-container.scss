@@ -19,10 +19,10 @@
   padding-bottom: 2rem; // for clear view 
   overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 8px -3px inset;
-  @include transition($prop: width,$delay:.5s);
+  @include transition($prop:( width: .5s));
   @include scrollbar();
   &.expand{
-    @include transition($prop: width,$delay:.5s);
+    @include transition($prop:( width: .5s));
     width: 100vw;
   }
 }

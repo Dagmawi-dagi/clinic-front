@@ -14,7 +14,7 @@ export const validateInput = (input,validations,callback)=>{
     // required or not 'rq'
     // other stuff like 
       // valid values {'valid':[]} 
-      // same-value {same:{ to: '',val:'' } }
+      // same-value {same:{ ref: '',val:'' } }
   // add other validation in the feature as needed and handle validation 
 
   // NOTE the validation error will be in the order of the validations passed!!!!!
@@ -49,7 +49,6 @@ export const validateInput = (input,validations,callback)=>{
       const obj = JSON.stringify(validationParam)
       if(obj.includes('valid') )joiSchema =  joiSchema.valid( ...JSON.parse(obj).valid).error(errors => {errors.forEach(err => {if (err.code === 'any.only')  err.message =`${inputName } must only be ${JSON.parse(obj).valid}`} );return errors;})  // for valid values
       else if(obj.includes('same') )joiSchema =  joiSchema.valid(JSON.parse(obj).same.val).error(errors => {errors.forEach(err => {if (err.code === 'any.only')  err.message = `${inputName } must be same as ${JSON.parse(obj).same.ref}`} );return errors;}) // for same values
-      // else if(obj.includes('same') ) joiSchema = joiSchema.$.valid(JSON.parse(obj).same.val).rule({message: `${inputName} must be same as ${ JSON.parse(obj).same.to }`})    // for same as values
     }
 
     if (inputType === 'file') {
@@ -60,7 +59,6 @@ export const validateInput = (input,validations,callback)=>{
       }
       if(validationParam.startsWith('size')) file_schema.size = Joi.number().$.max(validationParam.split('=')[1] * 1000000).rule({message:`the file size must be max of ${validationParam.split('=')[1]} MB`}) ; // in MB // if size is specifide on validation 
     }
-
   }
   
   // ------ for loop end ------ //
@@ -106,7 +104,7 @@ export const validateInput = (input,validations,callback)=>{
       if( JSON.stringify([...validations]).includes('single') ) value = value.file
       else if( JSON.stringify([...validations]).includes('array') ) value = value.map(el=>el.file) 
     }
-    callback(value) // if no error is foind the value wiil be given 
+    callback(value) // if no error is found the value wiil be given 
   }
   else callback({validationFailed: error.message }) // of the value validation was faild err is given
 }

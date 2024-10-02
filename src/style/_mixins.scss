@@ -19,7 +19,7 @@
 
 @mixin createContainer() {
   @include flexbox($direction: column);
-  @include transition();
+  @include transition($prop: onlytheme);
 
   color: var(--text-dark-gray);
   background-color: var(--white);
@@ -105,18 +105,21 @@
   border-radius: $radius;
 }
 
-@mixin transition($delay: .2s, $prop: theme) {
+// pass like @include transition(0.3s, (opacity: 0.4s, transform: 0.6s, width: 0.5s));
+@mixin transition($delay: .2s, $prop: onlytheme) {
   @if $prop == onlytheme {
     transition:
       background-color 0.2s ease-in-out,
       color 0.2s ease-in-out;
-  } @else {
-    transition:
-      background-color 0.2s ease-in-out,
-      color 0.2s ease-in-out,
-      $prop $delay ease-in-out;
+  } @else if type-of($prop) == 'map' {
+    $transitions: "background-color 0.2s ease-in-out, color 0.2s ease-in-out";
+    @each $p, $propDelay in $prop {
+      $transitions: #{$transitions}, #{$p} #{$propDelay} ease-in-out;
+    }
+    transition: #{$transitions};
   }
 }
+
 
 @mixin focus-01($color: #318cc8, $lighten: 30) {
   box-shadow: 0 0 0px .5px lighten($color, $lighten);

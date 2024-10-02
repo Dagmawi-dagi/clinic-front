@@ -19,7 +19,7 @@ const toggle = (dark) => {
 <template>
   <div
     class="themeContainer"
-    @click="(dark_theme = !dark_theme), set_theme(dark_theme), toggle(dark_theme)"
+    @click.stop="(dark_theme = !dark_theme), set_theme(dark_theme), toggle(dark_theme)"
   >
     <span class="themeIcon sun" :style="{ visibility: dark_theme ? 'hidden' : 'visible' }">
       <svg

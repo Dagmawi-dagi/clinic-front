@@ -4,7 +4,7 @@ import sideBarNavs from '../../assets/side-bar-navs';
 // comps
 import accordion from '../Reusable/Accordion/accordion_.vue';
 import compSpacer from '../Reusable/spacer_.vue';
-import loggedInUser from '../pages/user/logged-in-user.vue'
+import loggedInUser from '../user/logged-in-user.vue'
 // composables
 import { use_break_point } from '../../composables/break-point';
 // stores

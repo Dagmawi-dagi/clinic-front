@@ -1,6 +1,5 @@
-import { validateInput } from '../util/user-Input-validator'
+import { validateInput } from '../util/user-Input-validator';
 import { ref,watch } from 'vue';
-
 
 export const useUserInput = (submitFunc)=>{
 
@@ -12,20 +11,19 @@ export const useUserInput = (submitFunc)=>{
   const onSubmitDyn =  ref(null) // Maths random should be given to simulate an event
   // we need to wait a little for the form inputs to get thier validationResult
   // and the call the submit function if the validation for every form inputs have passed 
-    watch(onSubmitDyn,()=>{
-      setTimeout(() => {
-        for (const field in form.value) {
-          if( form.value[field].validationFailed ) return
-        }
-        submitFunc()
-      }, 300);
-    })
+  watch(onSubmitDyn,()=>{
+    setTimeout(() => {
+      for (const field in form.value) {
+        if( form.value[field].validationFailed )  return
+      }
+      submitFunc()
+    }, 300);
+  })
 
   //-----------------------------------------------------------------------------------------//
 
   //------------------------------used on the Reusable inputs comps--------------------------//
   const validation_result =  ref({})
-
   const validate_userinput_emitval = (inputType,inputVal,inputName,validations,emits)=>{
     validateInput({inputType, inputVal,inputName}, validations,( validationResult )=>{
       emits('inputVal', validationResult ) // will be error obj Or if validation passed { err: false, userinput:value }
