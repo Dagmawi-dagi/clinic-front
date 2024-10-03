@@ -44,8 +44,11 @@ watch(()=> props.resetVal ,()=>{
 
 <template>
   <div class="inputContainer" :id='`_${id}`' >
-    <label :for="`_${id}`" v-if="label" :style="{display: labelDisplay}"> {{ label }} </label>
-    <input :type="type"  :id='`_${id}`'  :placeholder="placeholder" v-model="userInput"  @blur="onblur">
+    <dir class="label-container" :class="{side: labelDisplay === 'inline', stack: labelDisplay === 'block' }" >
+      <label :for="`_${id}`" v-if="label"> {{ label }} </label>
+      <input :type="type"  :id='`_${id}`' :placeholder="placeholder" v-model="userInput"  @blur="onblur">
+    </dir>
+
     <errDisplay  
       v-if="validation_result"
       class="err"

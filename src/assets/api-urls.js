@@ -18,6 +18,7 @@ export default  {
   },
 
   "pateint": {
+    "searchPateint": {url:"/pateint/search",method: 'get'},
     "getArchive": { url: "/pateint_archive/:param1",method:'get'}
   }
 

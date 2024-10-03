@@ -8,13 +8,38 @@
   margin: auto;
   margin-bottom: 1rem;
   font-size: 100%;
+  & .err{
+    position: absolute;
+    bottom: -.9rem;
+    left: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-height: 1rem;
+    overflow: hidden;
+    margin: 0;
+  }
+
+}
+
+
+.label-container{
+  display: flex;
+  gap: 5px;
+
+  &.side{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.stack{
+    flex-direction: column;
+  }
 
   label{
     @include transition($prop:onlyTheme);
-    display: inline-block;
-    margin-right: 10px;
-    margin-bottom: 5px;
     color: var(--text-dark-gray);
+    cursor: pointer;
+    user-select: none;
   }
 
   & input{
@@ -32,18 +57,6 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-transform: capitalize;
     }
-
-
-  }
-
-  & .err{
-    position: absolute;
-    bottom: -.9rem;
-    left: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    max-height: 1rem;
-    overflow: hidden;
-    margin: 0;
   }
 
 }

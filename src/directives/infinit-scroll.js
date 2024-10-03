@@ -43,10 +43,10 @@ export const vInfinitScroll = {
       const { page,perPage } =  storeToRefs (stores[store])
   
       await apicall_from_store( store,urlRef,{
-        // mock:{
-        //   delay: 4000,
-        //   succ: true
-        // },
+        mock:{
+          delay: 4000,
+          succ: true
+        },
         list: true,
         fresh:false, 
         more: true,  

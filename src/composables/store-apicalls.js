@@ -23,8 +23,8 @@ export const  use_apicalls_from_store = ()=> {
     //     param1: '65c10c02fe9d2e1297bd4acc'
     //     list: true,
     //     fresh:false, 
-    //     more: true,  
-    //     queryObj : { page: page.value++, perPage: perPage.value,abc: 'asdasd' },
+    //     more: false,  
+    //     queryObj : { page: page.value, perPage: perPage.value,abc: 'asdasd' },
     //     onSucSaveTheJsonOn: 'users',
     //     token: true 
     //     data: {} // for the reqbody
