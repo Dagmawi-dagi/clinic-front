@@ -28,7 +28,7 @@
   text-transform: uppercase;
 }
 
-// for maz ui tabs
+// ---------------------for maz ui tabs-----------------------------//
 .tabs-container{
   .tabs_bar{
     @include transition($prop: (border-color: .2s) );
@@ -92,11 +92,19 @@
       position: absolute;
       top: 3px;
       bottom: 3px;
-      left: max(24%,115px)  ;
+      left: max(24%,115px);
     }
   }
-  
-  
-
 }
 
+// ---------------------END for maz ui tabs-----------------------------//
+
+
+// ------------horizontalSeparator------------///
+.horizontalSeparator{
+  width: 100%;
+  height: 1px;
+  // background-color: var(--light-blue);
+  margin: 10px;
+}
+// ----------END of horizontalSeparator------------//

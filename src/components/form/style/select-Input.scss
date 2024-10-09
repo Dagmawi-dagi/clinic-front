@@ -13,10 +13,10 @@
   width: 100%;
   padding: 10px 15px;
   padding-right: 20px;
-  border: 1px solid $border-light;
+  border: 1px solid $light-gray;
   border-radius: 3px;
   background-color: var(--white-bg);
-  color:$text-input-placeholder;
+  color:$text-light-gray;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
 
@@ -29,30 +29,37 @@
     height: 1.2rem;
     cursor: pointer;
   }
+}
 
-  & .err{
-    position: absolute;
-    bottom: -1rem;
-    left: 0;
-    color: tomato;
-  }
-
+.err-msg{
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  color: tomato;
+  font-size: 12px;
 }
 
 .dropdownInputItems-container{
   @include scrollbar;
-  @include transition($prop:onlytheme);
+  @include transition($prop: (border-color: .2s));
   position: absolute;
   width: 100%;
   max-height: 0px;
-  padding:0 10px;
 
   border: 1px  solid $border-light;
   background-color: var(--white-bg);
-  color: var(--dark-blue-text);
+  color: var(--text-light-gray);
   z-index: 2;
   cursor: pointer;
   
   overflow: hidden;
+}
 
+.dropdownInput-items{
+  padding: 0 5px;
+  line-height: 30px;
+  border-bottom: 1px solid var(--border-light-blue);
+  &:hover{
+    background-color: lightcoral;
+  }
 }

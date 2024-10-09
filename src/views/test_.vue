@@ -33,7 +33,7 @@ const raw_item  = ()=>{
 <template>
   <div v-infinit-scroll="{ custom_el:'router_view',store: 'user', urlRef:'user-getList',method:'get',onSucSaveTheJsonOn:'users', distance: 20}">
     <!-- {{  vInfinitScroll.infinitScrollLoading }} -->
-    <data-list class="data_list"
+    <dataList class="data_list"
       :list_items="users"
       :with_list_filter_search="true"
       :with_list_head="true"

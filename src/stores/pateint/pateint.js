@@ -5,11 +5,12 @@ import { ref } from 'vue';
 export const use_pateint_store = defineStore('pateint-store',()=>{
 
   // this array items have thier corespondant( same string ) urlRef on the "apiUrls" Asset file
-  const api_calls = ['getArchive','searchPateint']
+  const api_calls = ['getArchive','searchPateint','registerPateint']
   const pateint_store_apicalls_statusholder_obj = ref({})
 
   const pateint_archive = ref(null)
   const pateints = ref([])
+  const registered_pateint = ref({})
 
   const page = ref(1)
   const perPage = ref(10) 
@@ -23,5 +24,6 @@ export const use_pateint_store = defineStore('pateint-store',()=>{
 
     pateints,
     pateint_archive,
+    registered_pateint,
   }
 })

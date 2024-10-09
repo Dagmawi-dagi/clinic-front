@@ -94,10 +94,9 @@ export const validateInput = (input,validations,callback)=>{
   if( JSON.stringify([...validations]).includes('rq') && inputType != 'file') joiSchema = joiSchema.required()
   else if( !JSON.stringify([...validations]).includes('rq') && inputType != 'file') joiSchema = joiSchema.allow(inputVal) // to all null || '' || undifined 
   
-  
   // call the callback with the validationResult ...meaning the validation has ended and pass the result 
   let { error,value } =  joiSchema.validate(inputVal)
-  
+
   if(!error){
     if( inputType === 'file' ) {
       // since we have modified the input val to {file: File , type: '' , size:''} for validation // we need to change it back to file || [files] inly

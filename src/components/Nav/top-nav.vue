@@ -37,11 +37,11 @@ function search() {
         <span class="name">My Clinic</span>
       </div>
       <div class="search-container">
-        <RInputOne :id="'1'" :type="'text'" :validations="[]" :submit-dyn="onSubmitDyn" @input-val="form.first_name = $event" :label="'FirstName'" :label-display="'inline'" :placeholder="'FirstName'"  class="input" />
-        <RInputOne :id="'2'" :type="'text'" :validations="[]" :submit-dyn="onSubmitDyn" @input-val="form.middle_name = $event" :label="'MiddleName'" :label-display="'inline'" :placeholder="'MiddleName'"  class="input" />
-        <RInputOne :id="'3'" :type="'text'" :validations="[]" :submit-dyn="onSubmitDyn" @input-val="form.last_name = $event" :label="'LastName'" :label-display="'inline'" :placeholder="'LastName'"  class="input" />
-        <RInputOne :id="'4'" :type="'text'" :validations="[]" :submit-dyn="onSubmitDyn" @input-val="form.MRN = $event" :label="'MRN'" :label-display="'inline'" :placeholder="'MRN'"  class="input" />
-        <RInputOne :id="'5'" :type="'text'" :validations="[]" :submit-dyn="onSubmitDyn" @input-val="form.age = $event" :label="'Age'" :label-display="'inline'" :placeholder="'Age'"  class="input" />
+        <RInputOne :id="'100'" :type="'text'" :validations="[]" :submit-dyn="onSubmitDyn" @input-val="form.first_name = $event" :label="'FirstName'" :label-display="'inline'" :placeholder="'FirstName'"  class="input" />
+        <RInputOne :id="'200'" :type="'text'" :validations="[]" :submit-dyn="onSubmitDyn" @input-val="form.middle_name = $event" :label="'MiddleName'" :label-display="'inline'" :placeholder="'MiddleName'"  class="input" />
+        <RInputOne :id="'300'" :type="'text'" :validations="[]" :submit-dyn="onSubmitDyn" @input-val="form.last_name = $event" :label="'LastName'" :label-display="'inline'" :placeholder="'LastName'"  class="input" />
+        <RInputOne :id="'400'" :type="'text'" :validations="[]" :submit-dyn="onSubmitDyn" @input-val="form.MRN = $event" :label="'MRN'" :label-display="'inline'" :placeholder="'MRN'"  class="input" />
+        <RInputOne :id="'500'" :type="'text'" :validations="[]" :submit-dyn="onSubmitDyn" @input-val="form.age = $event" :label="'Age'" :label-display="'inline'" :placeholder="'Age'"  class="input" />
       </div>
       <div class="search-btn-container">
         <custom_btn_1  class="search-btn" 

@@ -19,7 +19,13 @@ export default  {
 
   "pateint": {
     "searchPateint": {url:"/pateint/search",method: 'get'},
-    "getArchive": { url: "/pateint_archive/:param1",method:'get'}
+    "getArchive": { url: "/pateint_archive/:param1",method:'get'},
+    "registerPateint": { url: "/pateint/register_pateint/",method:'post'}
+  },
+
+  "custom_invoice": {
+    "create": {url:"/custom_invoice",method: 'post'},
+    "getList": {url:"/custom_invoice",method: 'get'}
   }
 
 }

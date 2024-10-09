@@ -40,5 +40,5 @@ apicall_from_store('auth','auth-getProfile',{token: true, onSucSaveTheJsonOn : '
 @import './style/variables';
 @import './style/mixins';
 @import './style/fonts.scss';
-@import './style/global.scss';
+// since twe refmoved the global css the tool tip will NOT be styled ... and use radix's tool tip MAN!!!!
 </style>

@@ -18,7 +18,7 @@ const props = defineProps({
   validations: Array, // ['rq',...]
   validateOn: {
     type: String,
-    default: 'blur' // by default the input validation will be on blur
+    default: '' 
   },
   labelDisplay: {
     type: String,
@@ -29,13 +29,14 @@ const props = defineProps({
 const userInput = ref('')
 //if we have pre val set it on comp mounted
 onMounted(()=>{  if( props.preVal ) userInput.value = props.preVal})
+
 const { validate_userinput_emitval,validation_result } = useUserInput()
 //validating the userinput @input 
-if(  props.validateOn === 'input') watch(userInput,()=>{ validate_userinput_emitval( props.type === 'number' ? 'number' : 'string',userInput.value,props.placeholder ?? props.label ,props.validations,emits)})
+if( props.validateOn === 'input' ) watch(userInput,()=>{ validate_userinput_emitval( props.type === 'number' ? 'number' : 'string', userInput.value,props.placeholder ?? props.label ,props.validations,emits)})
 //validating the userinput @blur
 const onblur = () =>{ if(  props.validateOn === 'blur') validate_userinput_emitval( props.type === 'number' ? 'number' : 'string',userInput.value,props.placeholder ?? props.label ,props.validations,emits)}
 // nomatter the what the props.validateOn is watch and validate on onSubmitDyn 
-watch(()=>props.onSubmitDyn ,()=>{ validate_userinput_emitval( props.type === 'number' ? 'number' : 'string',userInput.value, props.placeholder ?? props.label ,props.validations,emits)})
+watch(()=>props.onSubmitDyn ,()=>{   validate_userinput_emitval( props.type === 'number' ? 'number' : 'string',userInput.value, props.placeholder ?? props.label ,props.validations,emits)})
 // resetVal Object holds Dynamic val so that it will simulate an event then reset the value of this specific input OR all other RInputones)
 watch(()=> props.resetVal ,()=>{ 
   if( props.resetVal.id === `_${props.id}` || props.resetVal.id === 'all'  ) userInput.value = ''
@@ -45,8 +46,8 @@ watch(()=> props.resetVal ,()=>{
 <template>
   <div class="inputContainer" :id='`_${id}`' >
     <dir class="label-container" :class="{side: labelDisplay === 'inline', stack: labelDisplay === 'block' }" >
-      <label :for="`_${id}`" v-if="label"> {{ label }} </label>
-      <input :type="type"  :id='`_${id}`' :placeholder="placeholder" v-model="userInput"  @blur="onblur">
+      <label :for="`__${id}`" v-if="label"> {{ label }} </label>
+      <input :type="type"  :id='`__${id}`' :placeholder="placeholder" v-model="userInput"  @blur="onblur">
     </dir>
 
     <errDisplay  

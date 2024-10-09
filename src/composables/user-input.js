@@ -15,7 +15,32 @@ export const useUserInput = (submitFunc)=>{
     setTimeout(() => {
       for (const field in form.value) {
         if( form.value[field].validationFailed )  return
+        else if( typeof form.value[field] == 'object' &&  JSON.stringify(form.value[field]).includes('validationFailed') )  return
       }
+      // before submit remove the fields with empty string like (field:"") cus on the back end we are using Joi to validate the input and empty string is not allowed
+      // form.value is {} with values  {field: String} || {field: {field: String }} || {field: [{field: String }]}  
+      // so we need to remove any field's value with empty String ("") from the form object
+      for (const field in form.value) {
+        console.log(  )
+        if(  typeof form.value[field] === 'object' ){
+          if(  Array.isArray(form.value[field]) ){
+            form.value[field].forEach( (item,index) => {
+              //since the item is object we need to check if it has any empty string value and remove it
+              if(  typeof item === 'object' ){
+                for (const key in item) {
+                  if( item[key] === '' ) delete item[key]
+                }
+              }
+              else if (typeof item === 'string' && item === '' ) delete form.value[field][index]
+            })
+          }else{
+            for (const key in form.value[field]) {
+              if( form.value[field][key] === '' ) delete form.value[field][key]
+            }
+        } 
+        }else if( typeof form.value[field] === 'string' && form.value[field] === '' ) delete form.value[field]
+     }
+
       submitFunc()
     }, 300);
   })
@@ -25,6 +50,7 @@ export const useUserInput = (submitFunc)=>{
   //------------------------------used on the Reusable inputs comps--------------------------//
   const validation_result =  ref({})
   const validate_userinput_emitval = (inputType,inputVal,inputName,validations,emits)=>{
+    
     validateInput({inputType, inputVal,inputName}, validations,( validationResult )=>{
       emits('inputVal', validationResult ) // will be error obj Or if validation passed { err: false, userinput:value }
       validation_result.value = validationResult

@@ -4,7 +4,7 @@ defineProps({
   spinner: Object,
   loading_state: Boolean,
   succMsg: Boolean,
-  errMsgDisplay: String,
+  errMsgDisplay: String
 })
 </script>
 
@@ -27,7 +27,6 @@ defineProps({
 @import '../../../style/mixins';
 @import '../../../style/global.scss';
 .btn{
-  @include button($bg-color:darken($color: $light-blue, $amount: 35), $text-color:white,$cssvar:false);
   margin-bottom: 10px;
   &{
     @include flexbox();
@@ -38,6 +37,9 @@ defineProps({
   }
   &:active {
     filter: brightness(80%);
+  }
+  &{
+    @include button($bg-color:darken($color: $light-blue, $amount: 35), $text-color:white,$cssvar:false);
   }
 }
 </style>

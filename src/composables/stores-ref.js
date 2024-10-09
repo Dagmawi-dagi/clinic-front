@@ -3,6 +3,7 @@ import { use_user_store } from '../stores/user';
 import { use_auth_store } from '../stores/auth';
 import { use_pateint_store } from '../stores/pateint/pateint';
 import { use_employee_store } from '../stores/employee/employee';
+import { use_custom_invoice_store } from '../stores/finance/custom_invoice';
 
 
 export const use_stores_refs = ()=>{
@@ -13,7 +14,8 @@ export const use_stores_refs = ()=>{
     'user': use_user_store(),
     'auth': use_auth_store(),
     'pateint': use_pateint_store(),
-    'employee': use_employee_store()
+    'employee': use_employee_store(),
+    'custom_invoice':use_custom_invoice_store()
   }
 
   // init the stores ApiCalls status holder reactive Object

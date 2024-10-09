@@ -12,7 +12,7 @@ const props =  defineProps({
 let SubdropdownInputMaxHeight = ref(null)
 const toggledropdownInput = (header)=>{
   emits('ActivedropdownInput',header)
-  SubdropdownInputMaxHeight.value = document.querySelector(`#${props.id} .subDropdownInput-header+.subDropdownInputItems-container`).scrollHeight + 'px'
+  SubdropdownInputMaxHeight.value = document.querySelector(`#_${props.id} .subDropdownInput-header+.subDropdownInputItems-container`).scrollHeight + 'px'
 }
 
 // the whole animation is done based on the open prop and inline Style

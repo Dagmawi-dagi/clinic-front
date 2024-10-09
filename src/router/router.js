@@ -60,8 +60,6 @@ const router = createRouter({
     },
 
     //---------------END of user Routes ------------------//
-
-
     {
       path:'/',
       name:'home',
@@ -71,7 +69,7 @@ const router = createRouter({
       },
       component : ()=>import ('../views/test_.vue'),
     },
-
+    // ----------------------- pateint routes ---------------------------//
     {
       path:'/pateint/:id',
       name:'pateint',
@@ -81,6 +79,16 @@ const router = createRouter({
       },
       component : ()=>import ('../views/pateint/pateint_.vue'),
     },
+    {
+      path:'/pateint/register',
+      name:'register-pateint',
+      meta:{ 
+        title: 'register-pateint', 
+        auth: true
+      },
+      component : ()=>import ('../views/pateint/register-pateint.vue'),
+    },
+    // ---------------------End of pateint routes -------------------//
 
     {
       path:'/employee/:id',
