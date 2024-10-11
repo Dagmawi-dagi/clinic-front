@@ -136,6 +136,20 @@ export const skill_heads = {
   "skill form" : { "grow":  true },
 }
 
+export const pateints_heads = {
+  "MRN":{ "width":"90px" },
+  "first_name":  { "width":"120px" },
+  "middle_name":  { "width":"120px" },
+  "last_name":{ "width":"120px" },
+  "age":{ "width":"120px" },
+  "gender":  { "width":"120px" },
+  "phone_number": { "width":"120px" },
+  "type":{ "width":"120px", bg:'cyan', tx:'#000' },
+  "insurance_company":{ "width":"120px" },
+  "invoice_destination":{ "width":"120px", bg:'cyan', tx:'#000' },
+  "createdAt":{ "width":"120px" },
+}
+
 export default { 
   a_heads,
   b_heads,
@@ -148,7 +162,7 @@ export default {
   deposites_heads,
   credit_heads,
   invoice_heads,
-
+  pateints_heads,
   // employee
   attendance_heads,
   contract_heads,
@@ -156,5 +170,8 @@ export default {
   payed_share_heads,
   rest_leave_heads,
   skill_heads
+
+
+
 
 }

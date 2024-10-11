@@ -49,7 +49,7 @@ export const  use_apicalls_from_store = ()=> {
     // but since it is async function we can catch the return value if the function by .then on the async function
     // and return the response from here to be used from any were
     apicall_from_store_loading.value = true
-    global_apihandler(urlRef,{
+   return global_apihandler(urlRef,{
       store,
       store_apicalls_statusholder_obj: `${store}_store_apicalls_statusholder_obj`,
       statusholder_obj_id: `${urlRef}`.split('-')[1],

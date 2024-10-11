@@ -60,7 +60,7 @@ function update_profile(){
 <template>
     <div class="container">
         <MazTabs class="tabs-container" @update:model-value="activetab = $event, form = {}">
-            <MazTabsBar :items="tabs" class="tabs_bar" :persistent="true" />
+            <MazTabsBar :items="tabs" class="tabs_bar" />
             <MazTabsContent class="tabs-content-container">
                 <MazTabsContentItem :tab="1" class="maz-py-4">
                     <template v-if="activetab == 1" >

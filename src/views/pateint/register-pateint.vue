@@ -107,7 +107,7 @@ function extractValidationErrors(data) {
     <div class="container">
         <h4>register pateint</h4>
         <MazTabs class="tabs-container" @update:model-value="activeTab = $event">
-            <MazTabsBar :items="tabs" class="tabs_bar" :persistent="true"/>
+            <MazTabsBar :items="tabs" class="tabs_bar"/>
             <MazTabsContent >
                 <MazTabsContentItem :tab="1" class="maz-py-4" >
                     <p class="info">first_name

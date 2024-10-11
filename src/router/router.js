@@ -28,7 +28,14 @@ const router = createRouter({
   //       store_result:''
   //     },
   //     other_info:{
-  //       // here the navs we have on the application
+        //  infinit_scroll:{ // if the page has infinite scroll
+        //     custom_el: String, //  if the el that the infinit directive expects is nor the RouterView Element
+        //     urlRef: 'user-getList',
+        //     queryObj_ref: 'router' // what query object to usewith the url for the infinit_scroll
+        //     store_ref: 'user',
+        //     onSucSaveTheJsonOn: "users",
+        //     distance: 20,
+        //   } 
   //     }
   //   },
 
@@ -58,7 +65,6 @@ const router = createRouter({
       },
       component : ()=>import ('../views/user/user-profile.vue'),
     },
-
     //---------------END of user Routes ------------------//
     {
       path:'/',
@@ -88,6 +94,25 @@ const router = createRouter({
       },
       component : ()=>import ('../views/pateint/register-pateint.vue'),
     },
+    {
+      path:'/pateints',
+      name:'pateints',
+      meta:{ 
+        title: 'pateints', 
+        auth: true,
+        other_info:{
+         infinit_scroll:{ // if the page has infinite scroll
+            url_ref: 'pateint-searchPateint',
+            queryObj_ref: 'frontEnd_route',
+            store_ref: 'pateint',
+            onSucSaveTheJsonOn: "pateints",
+            distance: 20,
+          },
+        }
+      },
+      component : ()=>import ('../views/pateint/pateints_.vue'),
+    },
+
     // ---------------------End of pateint routes -------------------//
 
     {

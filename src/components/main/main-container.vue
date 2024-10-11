@@ -5,6 +5,8 @@ import sideBar from '../Nav/side-bar.vue';
 import scrollTop from '../Reusable/scroll-top.vue';
 // composables
 import { use_break_point } from '../../composables/break-point';
+// directives
+import { vInfinitScroll } from '../../directives/infinit-scroll';
 // router
 import { RouterView } from 'vue-router';
 // stores
@@ -32,12 +34,37 @@ const expand = computed(()=>{
     <topNav/>
     <div class="main">
       <sideBar/>
-      <div class="router-view" :class="{ expand }"  ref="router_view_container">
+
+      <!-- if the route implemets infinit scroll -->
+      <div v-if="$route.meta.other_info?.infinit_scroll" class="router-view" :class="{ expand }"  ref="router_view_container" 
+        v-infinit-scroll="{ 
+          custom_el: $route.meta.other_info?.infinit_scroll.custom_el, 
+          store_ref:  $route.meta.other_info?.infinit_scroll.store_ref, 
+          url_ref: $route.meta.other_info?.infinit_scroll.url_ref, 
+          onSucSaveTheJsonOn: $route.meta.other_info?.infinit_scroll.onSucSaveTheJsonOn, 
+          distance: $route.meta.other_info?.infinit_scroll.distance,
+          queryObj_ref: $route.meta.other_info?.infinit_scroll.queryObj_ref,
+          router: $router, // for some reason
+          route: $route, // for some reason
+        }"
+        >
+        <RouterView /> 
+        <spinner_ v-if="$route.meta.other_info?.infinit_scroll && vInfinitScroll.infinitScrollLoading.value" 
+          style="margin: 1rem auto;" 
+          :color="'var(--dark-red)'" 
+          :width="'2.2rem'"   
+        />
+        <scrollTop :containerRef="router_view_container"  :from-top="50" />
+      </div>
+
+      <div v-else class="router-view" :class="{ expand }"  ref="router_view_container" >
         <RouterView /> 
         <scrollTop :containerRef="router_view_container"  :from-top="50" />
       </div>
+
     </div>
   </template>
+
 </template>
 
 <style scoped lang="scss">
