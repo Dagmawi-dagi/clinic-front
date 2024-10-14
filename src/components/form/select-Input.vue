@@ -31,7 +31,7 @@ const selectedInput = ref('')
 // set PreVal if we have any passed
 onMounted(()=>{ if (props.preVal) selectedInput.value = props.preVal })
 // here the selectedInput.value is passed as a string JUST to validate for required validation parameter since the expected validation is JUSt [] 
-watch(()=>props.onSubmitDyn ,()=>{ validate_userinput_emitval('string',selectedInput.value[props.item_ref] ?? "",props.placeholder,props.validations,emits)})
+watch(()=>props.onSubmitDyn ,()=>{ validate_userinput_emitval('string', selectedInput.value ? JSON.stringify(selectedInput.value) : '' ,props.placeholder,props.validations,emits)})
 // we need to set the max height of the dropdownInput to it's scrollHeight of the el
 // cus on open we only need the maxheight to be as much as it's content 
 // on Sub open we need  to add the sub-content scrollHeight maxheight 
@@ -49,6 +49,7 @@ const onActivedropdownInput=(header)=>{
   openedSubselectitem.value === header  ? openedSubselectitem.value = '' : openedSubselectitem.value =  header 
 }
 
+
 const container = ref(null)
 const headerinput = ref(null)
 onClickOutside(container,()=>{
@@ -60,7 +61,7 @@ onClickOutside(container,()=>{
 <template>
   <div class="dropdownInput-container" :id="`_${id}`" >
     <div class="dropdownInput"  ref="headerinput"  :style="{ color: selectedInput ? 'var(--text-dark-gray)' : 'var(--text-light-gray)' }"  @click="toggledropdownInput">
-      {{ selectedInput ? selectedInput.name : placeholder }}
+      {{ selectedInput ? selectedInput[item_ref] : placeholder }}
       <span class="selectIcon">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
@@ -76,15 +77,15 @@ onClickOutside(container,()=>{
       >
         
       <template v-for="(item,index) in items" :key="index">
-        <p v-if=" !item[`${subItems}`] ||  item[`${subItems}`]?.length === 0" class="dropdownInput-items"  @click="selectedInput = item,dropdownInputOpen=false ,openedSubselectitem=''">{{ item.name }} </p>
+        <p v-if=" !item[`${subItems}`] ||  item[`${subItems}`]?.length === 0" class="dropdownInput-items"  @click="selectedInput = item,dropdownInputOpen=false ,openedSubselectitem=''">{{ item[item_ref] }} </p>
         
         <subSelectInput  
           v-if="item[`${subItems}`] && item[`${subItems}`]?.length !=0 " 
           @ActivedropdownInput="onActivedropdownInput($event)"
           @subItemSelected="selectedInput = $event,dropdownInputOpen=false,openedSubselectitem=''"
-          :header="item.name"  
+          :header="item[item_ref]"  
           :sub-items="item[`${subItems}`]" 
-          :open="openedSubselectitem === item.name"
+          :open="openedSubselectitem === item[item_ref]"
         />
 
       </template>  

@@ -1,3 +1,16 @@
+@import './variables';
+@import './mixins';
+
+.route-container{
+  @include transition($prop: 'onlytheme');
+  margin: 0 1rem;
+  padding: 1rem 10px;
+  background-color: var(--white);
+  color: var(--text-dark-gray);
+  min-height: 100%;
+}
+
+
 #da-tooltip{
   position: absolute;
   z-index: 999999999999; // on top of any el on the screen
@@ -98,8 +111,6 @@
 }
 
 // ---------------------END for maz ui tabs-----------------------------//
-
-
 // ------------horizontalSeparator------------///
 .horizontalSeparator{
   width: 100%;
@@ -108,3 +119,37 @@
   margin: 10px;
 }
 // ----------END of horizontalSeparator------------//
+.dataList_head{
+  color: $text-blue;
+  font-size:150%;
+  text-transform: capitalize;
+}
+
+//----------------style for the RinputOne && chooseFile  comp----------------------------//
+
+.RInputOne{
+  margin-left: 0;
+  :deep(input){
+      background-color: var(--light-blue);
+      color: var( --text-dark-gray);
+      border: 1px solid var(--border-light-blue);
+      padding: 5px 10px;
+      width: min(90%,400px);
+  }
+}
+
+.chooseFile{
+  margin-left: 0;
+  :deep(button){
+      background-color: var(--light-blue);
+      color: var( --text-dark-gray);
+      border: 1px solid var(--border-light-blue);
+  }
+
+  :deep(.fileName){
+      background-color: var(--light-blue);
+      color: var( --text-dark-gray);
+      border: 1px solid var(--border-light-blue);
+  }
+}
+//

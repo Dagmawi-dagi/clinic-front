@@ -32,7 +32,7 @@ export const  use_apicalls_from_store = ()=> {
   const apicall_from_store_response = ref({})
   const apicall_from_store_loading = ref(false) 
 
-  const apicall_from_store = (store,urlRef,options)=>{
+  const apicall_from_store = async (store,urlRef,options)=>{
       // urlRef ~ urlRef event-getlist
 
       // store_apicalls_statusholder_obj // get it using the `${store}_store_apicalls_statusholder_obj`
@@ -49,27 +49,26 @@ export const  use_apicalls_from_store = ()=> {
     // but since it is async function we can catch the return value if the function by .then on the async function
     // and return the response from here to be used from any were
     apicall_from_store_loading.value = true
-   return global_apihandler(urlRef,{
+   const res = await global_apihandler(urlRef, {
       store,
       store_apicalls_statusholder_obj: `${store}_store_apicalls_statusholder_obj`,
       statusholder_obj_id: `${urlRef}`.split('-')[1],
       ...options,
       ...otherOptions(),
-    }).then((res)=>{
-      apicall_from_store_loading.value = false
-      apicall_from_store_response.value = {
-        status : res.data.status,
-        statusCode: res.status, 
-        data: res.data,
-        errMessage : res.data.errMessage ?? ''
-      }
-      // for every api call check if there is token in the res and save it to the localStorage
-      if(JSON.stringify(res.data).includes('token')){
-        setAuthOnLocalStorage(res.data.token)
-        if(route.name === 'login' ) router.push('/')
-      }
-
-    })
+    });
+    apicall_from_store_loading.value = false;
+    apicall_from_store_response.value = {
+      status: res.data.status,
+      statusCode: res.status,
+      data: res.data,
+      errMessage: res.data.errMessage ?? ''
+    };
+    // for every api call check if there is token in the res and save it to the localStorage
+    if (JSON.stringify(res.data).includes('token')) {
+      setAuthOnLocalStorage(res.data.token);
+      if (route.name === 'login') router.push('/');
+    }
+    return res
   }
 
   // if you want to cal api out side store ( from any where)

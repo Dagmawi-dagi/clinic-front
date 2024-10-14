@@ -124,7 +124,88 @@ const router = createRouter({
       },
       component : ()=>import ('../views/employee/employee_.vue'),
     },
-    
+    {
+      path:'/invoices',
+      name:'invoices-queue',
+      meta:{ 
+        title: 'invoices-queue', 
+        auth: true,
+        other_info:{
+          infinit_scroll:{ // if the page has infinite scroll
+             url_ref: 'invoice-getList',
+             queryObj_ref: 'frontEnd_route',
+             store_ref: 'invoice',
+             onSucSaveTheJsonOn: "invoices",
+             distance: 20,
+           },
+         }
+      },
+      component : ()=>import ('../views/finance/invoice_list.vue'),
+    },
+    {
+      path:'/credits',
+      name:'pateint-credits',
+      meta:{ 
+        title: 'pateint-credits', 
+        auth: true,
+        other_info:{
+          infinit_scroll:{ // if the page has infinite scroll
+             url_ref: 'credit-getList',
+             queryObj_ref: 'frontEnd_route',
+             store_ref: 'credit',
+             onSucSaveTheJsonOn: "credits",
+             distance: 20,
+           },
+         }
+      },
+      component : ()=>import ('../views/finance/credits_.vue'),
+    },
+    {
+      path:'/deposites',
+      name:'pateint-deposites',
+      meta:{ 
+        title: 'pateint-deposites', 
+        auth: true,
+        other_info:{
+          infinit_scroll:{ // if the page has infinite scroll
+             url_ref: 'deposite-getList',
+             queryObj_ref: 'frontEnd_route',
+             store_ref: 'deposite',
+             onSucSaveTheJsonOn: "deposites",
+             distance: 20,
+           },
+         }
+      },
+      component : ()=>import ('../views/finance/deposites_.vue'),
+    },
+
+    {
+      path:'/insurance-registration',
+      name:'insurance-registration',
+      meta:{ 
+        title: 'insurance-registration', 
+        auth: true,
+      },
+      component : ()=>import ('../views/finance/insurance-registration.vue'),
+    },
+    {
+      path:'/insurance-invoices',
+      name:'insurance-invoices',
+      meta:{ 
+        title: 'insurance-invoices', 
+        auth: true,
+      },
+      component : ()=>import ('../views/finance/insurance-invoices.vue'),
+    },
+    {
+      path:'/insurance-companies',
+      name:'insurance-companies',
+      meta:{ 
+        title: 'insurance-companies', 
+        auth: true,
+      },
+      component : ()=>import ('../views/finance/insurance-companies.vue'),
+    },
 
     {
       path:'/:catchAll(.*)',

@@ -16,13 +16,15 @@ import { useUserInput } from '@/composables/user-input';
 import { use_apicalls_from_store } from '@/composables/store-apicalls';
 //store
 import { use_custom_invoice_store } from '@/stores/finance/custom_invoice';
+import { use_insurance_store } from '@/stores/finance/insurance';
 import { storeToRefs } from 'pinia';
 //vue
 import { ref, watch,onMounted } from 'vue';
 
 const  { custom_invoices } = storeToRefs(use_custom_invoice_store())
-const { onSubmitDyn,form } = useUserInput(a)
+const  { insurances } = storeToRefs(use_insurance_store());
 const { apicall_from_store,apicall_from_store_loading,apicall_from_store_response } = use_apicalls_from_store()
+const { onSubmitDyn,form } = useUserInput(registerPateint)
 // prepare the form as desired
 form.value.pateint = {}
 form.value.emergency_contact = []
@@ -46,14 +48,19 @@ const showErrors =  ()=>{
 const searchTerm = ref('')
 watch(form.value.invoice, () => { searchTerm.value = '' }, { deep: true })
 const openCombobox = ref(undefined)
+
 onMounted(()=>{ document.querySelector('.TagsInputInput').addEventListener('click', () => { openCombobox.value = !openCombobox.value}) })
+
 function filterFunction(list, searchTerm) {
   return list.filter((person) => {
     return person.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
 }
 // load the variable invoices
-apicall_from_store('custom_invoice','custom_invoice-getList',{ onSucSaveTheJsonOn: 'custom_invoices', token: true})  
+apicall_from_store('custom_invoice','custom_invoice-getList',{ onSucSaveTheJsonOn: 'custom_invoices', token: true})
+// load the insurance companies
+apicall_from_store('insurance','insurance-getList',{ token: true, onSucSaveTheJsonOn: 'insurances'})
+
 // handling emergency_contact user input
 const emergency_contact_onSubmitDyn = ref(null)
 function createNew_emergency_contact() {
@@ -68,14 +75,6 @@ function createNew_emergency_contact() {
         form.value.emergency_contact.push({})
     }, 300);
 }
-// submit function(register btn)
-function a (){
-    apicall_from_store('pateint','pateint-registerPateint',{ 
-        token: true,
-        data: form.value,
-        onSucSaveTheJsonOn: 'registered_pateint'
-    })
-}
 // to show front validation errors after register clicked ... we need this cus we are using inputes on diffrent tabs 
 function extractValidationErrors(data) {
   const errors = [];
@@ -87,18 +86,26 @@ function extractValidationErrors(data) {
         data[key].forEach((item, index) => {
           if (typeof item === 'object') {
             for (const field in item) {
-              if (item[field].validationFailed) errors.push({ [`${key}[${index}].${field}`]: item[field] });
+              if (item[field]?.validationFailed) errors.push({ [`${key}[${index}].${field}`]: item[field] });
             }
           }
         });
       } else {
         for (const field in data[key]) { // Handle objects with 'validationFailed' messages
-          if (data[key][field].validationFailed) errors.push({ [field]: data[key][field] });
+          if (data[key][field]?.validationFailed) errors.push({ [field]: data[key][field] });
         }
       }
     }
   }
   return errors;
+}
+// submit function(register btn)
+function registerPateint (){
+    apicall_from_store('pateint','pateint-registerPateint',{ 
+        token: true,
+        data: form.value,
+        onSucSaveTheJsonOn: 'registered_pateint'
+    })
 }
 
 </script>
@@ -158,7 +165,7 @@ function extractValidationErrors(data) {
                         :placeholder="'gender'"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="['rq']"
-                        @inputVal="form.pateint.gender = $event"
+                        @inputVal="form.pateint.gender = $event.validationFailed ?  $event : JSON.parse($event).name"
                         />
                     </p>
                     <p class="info">marital_status
@@ -170,7 +177,7 @@ function extractValidationErrors(data) {
                         :placeholder="'marital_status'"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="[]"
-                        @inputVal="form.pateint.marital_status = $event"
+                        @inputVal="form.pateint.marital_status = $event.name"
                         />
                     </p>
                     <p class="info">religion
@@ -182,7 +189,7 @@ function extractValidationErrors(data) {
                         :placeholder="'religion'"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="[]"
-                        @inputVal="form.pateint.religion = $event"
+                        @inputVal="form.pateint.religion = $event.name"
                         />
                     </p>
                     <p class="info">occupatio
@@ -263,12 +270,11 @@ function extractValidationErrors(data) {
                         <selectInput class="selectInput" :id="'77'"
                         :items="pateintType"
                         :item_ref="'name'"
-
                         :subItems="'asd'"
                         :placeholder="'pateintType'"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="['rq']"
-                        @inputVal="form.pateint.type = $event"
+                        @inputVal="form.pateint.type = $event.validationFailed ?  $event : JSON.parse($event).name"
                         />
                     </p>
                     <p class="info">insurance
@@ -290,9 +296,21 @@ function extractValidationErrors(data) {
                         :placeholder="'invoice_destination'"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="['rq']"
-                        @inputVal="form.pateint.invoice_destination = $event"
+                        @inputVal="form.pateint.invoice_destination = $event.validationFailed ?  $event : JSON.parse($event).name"
                         />
                     </p>
+                    <p class="info">insurance company
+                        <selectInput class="selectInput" :id="'1140'"
+                        :items="insurances"
+                        :item_ref="'company_name'"
+                        :subItems="'asd'"
+                        :placeholder="'insurance company'"
+                        :onSubmitDyn="onSubmitDyn"
+                        :validations="[]"
+                        @inputVal="form.pateint.insurance_company = $event ? JSON.parse($event)._id  : $event "
+                        />
+                    </p>
+
                 </MazTabsContentItem>
                 <MazTabsContentItem :tab="4" class="maz-py-4">
                     <template v-for="(em,i) in form.emergency_contact" :key="em"> 

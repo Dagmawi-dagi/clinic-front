@@ -34,7 +34,6 @@ const expand = computed(()=>{
     <topNav/>
     <div class="main">
       <sideBar/>
-
       <!-- if the route implemets infinit scroll -->
       <div v-if="$route.meta.other_info?.infinit_scroll" class="router-view" :class="{ expand }"  ref="router_view_container" 
         v-infinit-scroll="{ 

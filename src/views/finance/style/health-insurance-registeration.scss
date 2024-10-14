@@ -1,0 +1,9 @@
+@import '../../../style/variables';
+@import '../../../style/mixins';
+@import '../../../style/global.scss';
+
+
+.head{
+    color: $text-blue;
+    text-transform: capitalize;
+}

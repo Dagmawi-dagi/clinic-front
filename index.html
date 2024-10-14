@@ -9,5 +9,16 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    <!-- below the app Mount el set the style global errol alert toast -->
+    <style lang="scss"> 
+      .global_error{
+        padding: 7px;
+        & .v-dialog-body.toast-error{
+          background-color: #fff;
+          color: var(--dark-red);
+          border-color: var(--dark-red);
+        }
+      }
+    </style>
   </body>
 </html>

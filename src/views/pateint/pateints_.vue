@@ -12,7 +12,7 @@ import { use_pateint_store } from '../../stores/pateint/pateint'
 import { storeToRefs } from 'pinia';
 
 const { pateints } =  storeToRefs(use_pateint_store());
-const { apicall_from_store } = use_apicalls_from_store();
+const { apicall_from_store,apicall_from_store_loading } = use_apicalls_from_store();
 const route = useRoute();
 
 const filter_search  = ()=>{
@@ -33,6 +33,8 @@ apicall_from_store( 'pateint','pateint-searchPateint',{ token: true, queryObj : 
 </script>
 <template>
     <dataList class="data_list"
+      :data_loading="apicall_from_store_loading"
+
       :list_items="pateints"
       :with_list_filter_search="true"
       :with_list_head="true"
@@ -47,7 +49,12 @@ apicall_from_store( 'pateint','pateint-searchPateint',{ token: true, queryObj : 
       @util="util"
       @raw="raw"
       @raw_item="raw_item"
-      />
+      >
+      <template #list_filter_search>
+        <h1 class="dataList_head">pateints</h1>
+      </template>
+      </dataList>
 </template>
 <style lang="scss" scoped>
+@import '../../style/global.scss';
 </style>

@@ -19,6 +19,7 @@ const { apicall_from_store } = use_apicalls_from_store()
 init_stores()
 use_set_theme()
 apicall_from_store('auth','auth-getProfile',{token: true, onSucSaveTheJsonOn : 'logged_in_user'})
+
 </script>
 
 <template>

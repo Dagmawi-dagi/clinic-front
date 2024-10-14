@@ -42,7 +42,7 @@ const raw_item  = ()=>{
 
     <div class='info-container'>
       <data_list class="data_list"
-        :list_items="pateint_archive?.emergency_contacts"
+        :list_items="pateint_archive?.emergency_contacts ?? []" 
         :with_list_filter_search="true"
         :with_list_head="true"
         :raws_container_margin="'5px 0'"
@@ -66,7 +66,7 @@ const raw_item  = ()=>{
 
     <div class='info-container'>
       <data_list class="data_list"
-        :list_items="pateint_archive?.warnings"
+        :list_items="pateint_archive?.warnings ?? []"
         :with_list_filter_search="true"
         :with_list_head="true"
         :raws_container_margin="'5px 0'"
@@ -96,8 +96,8 @@ const raw_item  = ()=>{
         :raws_container_margin="'5px 0'"
 
         :list_filter_search="{size:'sm',filter_bool: false,filterArray:[],search_bool: false}"
-        :list_head="{size:'sm',heads:listHeads.invoice_heads}"
-        :list_raw="{size:'sm',resize:false,heads:listHeads.invoice_heads,utils:['a','b','c']}"
+        :list_head="{size:'sm',heads:listHeads.invoice_head}"
+        :list_raw="{size:'sm',resize:false,heads:listHeads.invoice_head,utils:['a','b','c']}"
 
         @filter="filter_search"  
         @search="filter_search"
@@ -113,7 +113,7 @@ const raw_item  = ()=>{
 
     <div class='info-container'>
       <data_list class="data_list"
-        :list_items="pateint_archive?.credites"
+        :list_items="pateint_archive?.credites ?? []"
         :with_list_filter_search="true"
         :with_list_head="true"
         :raws_container_margin="'5px 0'"
@@ -136,7 +136,7 @@ const raw_item  = ()=>{
 
     <div class='info-container'>
       <data_list class="data_list"
-        :list_items="pateint_archive?.deposites"
+        :list_items="pateint_archive?.deposites??[]"
         :with_list_filter_search="true"
         :with_list_head="true"
         :raws_container_margin="'5px 0'"

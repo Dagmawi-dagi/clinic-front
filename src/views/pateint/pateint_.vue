@@ -8,16 +8,14 @@ import { use_pateint_store } from '../../stores/pateint/pateint';
 import { storeToRefs } from 'pinia';
 
 const { pateint_archive } = storeToRefs( use_pateint_store() )
-
 const { apicall_from_store } = use_apicalls_from_store()
-apicall_from_store('pateint','pateint-getArchive',{ param1:'66b9ca0c6fd0a187c5732990', token:true,onSucSaveTheJsonOn:'pateint_archive'})
+apicall_from_store('pateint','pateint-getArchive',{ 
+  param1:'66b9ca0c6fd0a187c5732990', 
+  token:true,
+  onSucSaveTheJsonOn:'pateint_archive'
+})
 </script>
 
 <template>
-  <pateintArchive
-    :pateint_archive="pateint_archive"
-  />
+  <pateintArchive  :pateint_archive="pateint_archive" />
 </template>
-
-<style scoped lang="scss">
-</style>

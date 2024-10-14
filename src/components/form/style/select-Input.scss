@@ -40,8 +40,7 @@
 }
 
 .dropdownInputItems-container{
-  @include scrollbar;
-  @include transition($prop: (border-color: .2s));
+ 
   position: absolute;
   width: 100%;
   max-height: 0px;
@@ -53,6 +52,11 @@
   cursor: pointer;
   
   overflow: hidden;
+
+  &{
+    @include transition($prop: (border-color: .2s));
+    @include scrollbar;
+  }
 }
 
 .dropdownInput-items{

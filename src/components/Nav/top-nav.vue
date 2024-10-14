@@ -12,7 +12,7 @@ import { use_pateint_store } from '../../stores/pateint/pateint';
 import { storeToRefs } from 'pinia';
 
 const router = useRouter();
-const { apicall_from_store,apicall_from_store_loading,apicall_from_store_response } = use_apicalls_from_store();
+const { apicall_from_store,apicall_from_store_loading } = use_apicalls_from_store();
 const { onSubmitDyn,form } = useUserInput(search);
 const { page, perPage } = storeToRefs(use_pateint_store());
 
@@ -30,9 +30,7 @@ function search() {
     queryObj : { page: page.value, perPage: perPage.value,...form.value }, // send the search form as query object
     onSucSaveTheJsonOn: 'pateints',
   })
-  .then( () => {
-    router.push({name: "pateints", query: { ...form.value }})
-  })
+  .then( () => {  router.push({name: "pateints", query: { ...form.value }})})
 }
 </script>
 
@@ -54,19 +52,17 @@ function search() {
         <custom_btn_1  class="search-btn" 
         :spinner="{color: '#fff',width: '1rem'}" 
         :loading_state="apicall_from_store_loading"
-        :err-msg-display="apicall_from_store_response?.errMessage"
         @btn="onSubmitDyn = Math.random()"
         > 
         search pateint 
         </custom_btn_1>
-        <custom_btn_1  class="search-btn" 
+        <!-- <custom_btn_1  class="search-btn" 
         :spinner="{color: '#fff',width: '1rem'}" 
         :loading_state="apicall_from_store_loading"
-        :err-msg-display="apicall_from_store_response?.errMessage"
         @btn="onSubmitDyn = Math.random()"
         > 
         search employee 
-        </custom_btn_1>
+        </custom_btn_1> -->
       </div>
      
     </div>

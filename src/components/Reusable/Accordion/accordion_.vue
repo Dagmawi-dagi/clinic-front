@@ -1,7 +1,4 @@
 <script setup>
-//directive
-import { vTooltip } from '../../../directives/toop-tip';
-// import { vTooltip } from 'maz-ui/modules/index.cjs'
 // vue
 import { ref,watch,onMounted } from 'vue';
 
@@ -49,7 +46,7 @@ watch(deep_active_acc,()=>{
 
 <template>
   <div class="accordion-Container"  :id="`_${id}`" >
-    <div class="accoordion-header" v-tooltip="head"  @click="toggleAcc"   :icon="toggler_icon" >  
+    <div class="accoordion-header"  @click="toggleAcc"   :icon="toggler_icon" >  
       {{ head }} 
       <span class="AccTogglerIcon" v-if="toggler_icon">
         <svg v-if="!accordion_open"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -67,7 +64,7 @@ watch(deep_active_acc,()=>{
         transition:'max-height  0.3s ease-out'}" >
 
         <template v-for="(item,index) in items" :key="index">
-          <span v-if="!item[`${sub_ref}`]"  v-tooltip="item[item_ref]" class="accoordion-item" @click="$emit('handleAccChoice',item)" >{{ item[item_ref] }} </span>
+          <span v-if="!item[`${sub_ref}`]"  class="accoordion-item" @click="$emit('handleAccChoice',item)" >{{ item[item_ref] }} </span>
 
           <template v-if="item[sub_ref]">
             <accordion_ class="deep_acc"

@@ -14,11 +14,11 @@ export default [
       },
       {
         "name": "deposites",
-        "route_name": "deposites",
+        "route_name": "pateint-deposites",
       },
       {
-        "name": "credites",
-        "route_name": "credites",
+        "name": "credits",
+        "route_name": "pateint-credits",
       },
     ]
   },
@@ -61,8 +61,22 @@ export default [
     "role": 'finance',
     "routes" : [
       {
-        "name": "health insurances",
-        "route_name": "health-insurances",
+        "name": "health insurance",
+        sub_routes:[
+          {
+            "name": "insurance registration",
+            "route_name": "insurance-registration",
+          },
+          {
+            "name": "insurance companies",
+            "route_name": "insurance-companies",
+          },
+          {
+            "name": "insurance invoices",
+            "route_name": "insurance-invoices",
+          }
+        ]
+
       },
       {
         "name": "invoices",

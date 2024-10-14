@@ -8,19 +8,14 @@ import {serverUrl} from '../../util/server';
 import { use_auth_store } from '../../stores/auth';
 import { storeToRefs } from 'pinia';
 
-defineProps({
-  user: Object
-})
-
+defineProps({ user: Object})
 const { logged_in_user } = storeToRefs( use_auth_store() )
 </script>
 
 <template>
   <div class="userContainer" @click="$router.push({name: 'user-profile' })" >
     <AvatarRoot class="AvatarRoot">
-      <AvatarImage class="AvatarImage" alt="avatar"
-      :src="`${serverUrl}/${logged_in_user.avatar.split('-')[0]}/users/${logged_in_user.avatar}`"
-      />
+      <AvatarImage class="AvatarImage" alt="avatar" :src="`${serverUrl}/${logged_in_user?.avatar.split('-')[0]}/users/${logged_in_user.avatar}`"/>
       <AvatarFallback class="AvatarFallback" :delay-ms="600">
         <span style="text-transform: uppercase;"> {{ `${logged_in_user.userName}`.split('')[0] +`${logged_in_user.userName}`.split('')[1] }} </span> 
       </AvatarFallback>

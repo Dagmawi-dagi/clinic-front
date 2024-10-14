@@ -4,7 +4,6 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router/router'
 
-// Nprogress bar css
 import'nprogress/nprogress.css';
 import Nprogress from 'nprogress'
 export const progress_bar =  Nprogress.configure({

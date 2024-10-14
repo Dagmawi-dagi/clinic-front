@@ -74,19 +74,9 @@ export const  credit_heads =  {
   "createdAt" : { "width":  '120px'},
 }
 
-
-export const  invoice_heads =  {
-  "type" : { "width":"120px" },
-  "destination" : { "width":  '120px'},
-  "service" : { "width":  '120px'},
-  "createdAt" : { "width":  '120px'},
-}
-
-
 export const  prescroption_heads =  {
  // not from DB but from form creator
 }
-
 
 //employee
 export const  attendance_heads =  {
@@ -150,6 +140,45 @@ export const pateints_heads = {
   "createdAt":{ "width":"120px" },
 }
 
+export const invoice_head = {
+  "status":{ "width":"90px", bg:'cyan', tx:'#000' },
+  "payment_type":  { "width":"120px" },
+  "credited":  { "width":"120px" },
+  "free_pass":{ "width":"120px" },
+  "issued_at_price":{ "width":"120px" },
+  "custom_invoice":  { "width":"120px" },
+  "createdBy":  { "width":"120px" },
+  "pateint_archive": {"width": "120px"},
+  "createdAt":  { "width":"120px" },
+}
+
+export const credit_head = {
+  "pateint_archive":{ "width":"90px", bg:'cyan', tx:'#000' },
+  "invoice":  { "width":"120px" },
+  "createdBy": { "width":"120px" },
+  "createdAt":  { "width":"120px" },
+}
+
+export const deposite_head = {
+  "deposit_amount":{ "width":"120px", bg:'cyan', tx:'#000' },
+  "current_amount":  { "width":"120px" },
+  "payed_invoices":  { "width":"120px" },
+  "withdrawn":  { "width":"120px" },
+  "pateint_archive":  { "width":"120px" },
+  "createdBy": { "width":"120px" },
+  "createdAt":  { "width":"120px" },
+}
+
+export const insurance_head = {
+  "company_name":{ "width":"120px", bg:'cyan', tx:'#000' },
+  "insurance_number":  { "width":"120px" },
+  "discount_form":  { "width":"120px" },
+  "phone_number":  { "width":"120px" },
+  "email":  { "width":"120px" },
+  "createdBy": { "width":"120px" },
+  "createdAt":  { "width":"120px" },
+}
+
 export default { 
   a_heads,
   b_heads,
@@ -161,8 +190,11 @@ export default {
   health_insurance_heads,
   deposites_heads,
   credit_heads,
-  invoice_heads,
+  invoice_head,
+  credit_head,
+  deposite_head,
   pateints_heads,
+  insurance_head,
   // employee
   attendance_heads,
   contract_heads,
@@ -170,8 +202,6 @@ export default {
   payed_share_heads,
   rest_leave_heads,
   skill_heads
-
-
 
 
 }

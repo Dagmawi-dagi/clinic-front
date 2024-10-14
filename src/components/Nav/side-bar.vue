@@ -17,7 +17,6 @@ const { tablet,mobilePhone } = use_break_point()
 const  active_acc  = ref()
 </script>
 
-
 <template>
   <div class="container" :class="{ position:  tablet || mobilePhone , open: side_bar_open, close: !side_bar_open  }"  >
     <loggedInUser/>

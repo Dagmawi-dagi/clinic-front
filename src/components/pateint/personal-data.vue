@@ -17,8 +17,10 @@ const tabs = ['personal info ','address info',' medical adminstration info']
 onMounted(()=>{
   const active_tab_indicator =  document.querySelectorAll('.m-tabs-bar__indicator')[0]
   const active_tab = document.querySelector('.--active.m-tabs-bar__item')
-  active_tab_indicator.style.width = `${active_tab.clientWidth}px`;
-  active_tab_indicator.style.height = `${active_tab.clientHeight}px`;
+  if(active_tab_indicator){
+    active_tab_indicator.style.width = `${active_tab.clientWidth}px`;
+    active_tab_indicator.style.height = `${active_tab.clientHeight}px`;
+  }
 })
 
 const a =  (evt)=>{

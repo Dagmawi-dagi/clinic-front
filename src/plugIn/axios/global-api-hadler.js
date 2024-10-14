@@ -2,7 +2,7 @@ import { AxiosInstance } from './instance';
 import { setAuth } from '../../util/work-with-token';
 import apiUrls from '../../assets/api-urls';
 // error handling
-import { global_error_handler } from '../../error handling/global_error_handler'
+import { global_apicall_error_handler } from '../../error handling/global_error_handler'
 
 // stores 
 import { use_stores_refs } from '../../composables/stores-ref'
@@ -18,7 +18,7 @@ export const global_apihandler =   async ( urlRef, options )=>{
     // global_apihandler('event-getlist',options).then(()=>{  })
 
   // urlRef ~ urlRef event-getlist
-  const { url,method } = apiUrls[urlRef.split('-')[0]][urlRef.split('-')[1]]
+  const { url,method,handle_api_err_globally } = apiUrls[urlRef.split('-')[0]][urlRef.split('-')[1]]
 
   // here if the GlobalApiHandler Call was from any of the stores 
   // we want to handle every thing on here (the storage of the response Obj and the status of that specific api caller method )
@@ -75,51 +75,8 @@ export const global_apihandler =   async ( urlRef, options )=>{
     return res
   } catch (err) {
 
-    // for testing
-    if( options.list  &&  options.more )  onSucSaveTheJsonOn.value.push(...[{
-      "_id": "64d5e519ad123fed0d0e35e6" + Math.random(),
-      "body": "answer to my new Question as Anon answer to my new Question as Anon",
-      "upvotes": 1,
-      "downvotes": 0,
-      "userVote": 1,
-      "accepted": true,
-      "isAnon": true,
-      "createdAt": "2023-08-11T07:36:57.802Z",
-      "updatedAt": "2023-08-11T08:15:48.603Z",
-    },{
-      "_id": "64d5e519ad123fed0d0e35e6" + Math.random(),
-      "body": "answer to my new Question as Anon answer to my new Question as Anon",
-      "upvotes": 1,
-      "downvotes": 0,
-      "userVote": 1,
-      "accepted": true,
-      "isAnon": true,
-      "createdAt": "2023-08-11T07:36:57.802Z",
-      "updatedAt": "2023-08-11T08:15:48.603Z",
-    },{
-      "_id": "64d5e519ad123fed0d0e35e6" + Math.random(),
-      "body": "answer to my new Question as Anon answer to my new Question as Anon",
-      "upvotes": 1,
-      "downvotes": 0,
-      "userVote": 1,
-      "accepted": true,
-      "isAnon": true,
-      "createdAt": "2023-08-11T07:36:57.802Z",
-      "updatedAt": "2023-08-11T08:15:48.603Z",
-    },{
-      "_id": "64d5e519ad123fed0d0e35e6" + Math.random(),
-      "body": "answer to my new Question as Anon answer to my new Question as Anon",
-      "upvotes": 1,
-      "downvotes": 0,
-      "userVote": 1,
-      "accepted": true,
-      "isAnon": true,
-      "createdAt": "2023-08-11T07:36:57.802Z",
-      "updatedAt": "2023-08-11T08:15:48.603Z",
-    }])
-
     if( options.store ) EndApiWithErr(statusholder_obj_id,store_apicalls_statusholder_obj,err);
-    global_error_handler(err)
+    if ( handle_api_err_globally ) global_apicall_error_handler(err)
     // if the Apicall was not form store the resErr will be returned ... so can be used from there
     return err.response
   }

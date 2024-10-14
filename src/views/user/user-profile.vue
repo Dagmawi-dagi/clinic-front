@@ -64,21 +64,21 @@ function update_profile(){
             <MazTabsContent class="tabs-content-container">
                 <MazTabsContentItem :tab="1" class="maz-py-4">
                     <template v-if="activetab == 1" >
-                        <RInputOne :id="'1'"  :type="'text'" :placeholder="'username'"   class="input" 
+                        <RInputOne :id="'1'"  :type="'text'" :placeholder="'username'"   class="RInputOne" 
                         :label="'user Name'"
                         :preVal="logged_in_user.userName"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="['rq']"
                         @inputVal="form.userName = $event"
                         />
-                        <RInputOne :id="'2'" :type="'email'" :placeholder="'email'"  class="input" 
+                        <RInputOne :id="'2'" :type="'email'" :placeholder="'email'"  class="RInputOne" 
                         :label="'Email'"
                         :preVal="logged_in_user.email"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="['rq']"
                         @inputVal="form.email = $event"
                         />
-                        <chooseFile :id="'4'" :single="true" class="file-input"
+                        <chooseFile :id="'4'" :single="true" class="chooseFile"
                         :validations="['type=img']" 
                         :btntext="'profile photo'" 
                         @inputVal="form.avatar = $event"
@@ -88,14 +88,14 @@ function update_profile(){
 
                 <MazTabsContentItem :tab="2" class="maz-py-4">
                     <template v-if="activetab == 2">
-                        <RInputOne :id="'3'" :type="'text'" :placeholder="'phonenumber'"  class="input" 
+                        <RInputOne :id="'3'" :type="'text'" :placeholder="'phonenumber'"  class="RInputOne" 
                         :label="'Phone Number'"
                         :preVal="logged_in_user.phoneNumber"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="['rq']"
                         @inputVal="form.newPhoneNumber = $event"
                         />
-                        <RInputOne :id="'5'" :type="'password'" :placeholder="'current password'"  class="input" 
+                        <RInputOne :id="'5'" :type="'password'" :placeholder="'current password'"  class="RInputOne" 
                         :label="'current password'"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="['rq']"
@@ -106,19 +106,19 @@ function update_profile(){
 
                 <MazTabsContentItem :tab="3" class="maz-py-4">
                     <template v-if="activetab == 3">
-                        <RInputOne :id="'5'" :type="'password'" :placeholder="'current password'"  class="input" 
+                        <RInputOne :id="'5'" :type="'password'" :placeholder="'current password'"  class="RInputOne" 
                         :label="'current password'"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="['rq']"
                         @inputVal="form.currentPassword = $event"
                         />
-                        <RInputOne :id="'6'" :type="'password'" :placeholder="'new password'"  class="input" 
+                        <RInputOne :id="'6'" :type="'password'" :placeholder="'new password'"  class="RInputOne" 
                         :label="'new password'"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="['rq']"
                         @inputVal="form.newPassword = $event"
                         />
-                        <RInputOne :id="'6'" :type="'password'" :placeholder="'confirm new password'"  class="input" 
+                        <RInputOne :id="'6'" :type="'password'" :placeholder="'confirm new password'"  class="RInputOne" 
                         :label="'confirm new password'"
                         :onSubmitDyn="onSubmitDyn"
                         :validations="['rq',{same:{ ref: `'new password'`,val: form.newPassword  } }]"
