@@ -80,7 +80,7 @@ export default [
       },
       {
         "name": "invoices",
-        "route_name": "invoices",
+        "route_name": "invoices-queue",
       },
     ]
   },
