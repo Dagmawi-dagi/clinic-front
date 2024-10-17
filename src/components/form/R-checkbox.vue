@@ -12,11 +12,12 @@ const props = defineProps({
   defaultCheckbox: Number, 
   onSubmitDyn: Number, // for on submit emit inputVal
 })
-
 // user can select or deselect multiple inputs
-const userInput = ref([props.checkboxOptions[props.defaultCheckbox]])
-watch(userInput,()=>{ emits('inputVal',{err:false , userInput:userInput.value}) })
-watch(()=>props.onSubmitDyn ,()=>{ emits('inputVal',{err:false ,  userInput:userInput.value})})
+const userInput = ref([])
+if(props.checkboxOptions[props.defaultCheckbox]) userInput.value.push(props.checkboxOptions[props.defaultCheckbox])
+
+watch(userInput,()=>{ emits('inputVal',userInput.value ) })
+watch(()=>props.onSubmitDyn ,()=>{ emits('inputVal',userInput.value )})
 
 </script>
 

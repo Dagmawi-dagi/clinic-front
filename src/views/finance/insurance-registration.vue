@@ -10,14 +10,10 @@ import custom_btn_1 from '@/components/Reusable/button/custom_btn_1.vue';
 //compoasbles
 import { useUserInput } from '@/composables/user-input';
 import { use_apicalls_from_store } from '@/composables/store-apicalls';
-// store
-import { use_auth_store } from '@/stores/auth';
-import { storeToRefs } from 'pinia'
 // vue
 import { onMounted } from 'vue';
 
 const { form,onSubmitDyn } = useUserInput(register_insurance)
-const { logged_in_user } = storeToRefs(use_auth_store())
 
 const { apicall_from_store,apicall_from_store_loading,apicall_from_store_response } = use_apicalls_from_store()
 const tabs = ['info','discount info','address']
@@ -35,7 +31,7 @@ const add_insuranceDiscount_toform = (insuranceDiscountForm)=>{
 }
 // register_pateint
 function register_insurance (){
-    apicall_from_store('insurance','insurance-create',{  token: true,data: {...form.value, createdBy: logged_in_user.value._id}})
+    apicall_from_store('insurance','insurance-create',{  token: true,data: {...form.value}})
 }
 
 </script>

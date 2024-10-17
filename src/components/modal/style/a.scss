@@ -1,9 +1,0 @@
-@import '../../../style/variables';
-@import '../../../style/mixins';
-
-.ModalContainer{
-  @include Modalcontainer;
-  & .container{
-    @include createContainer;
-  }
-}

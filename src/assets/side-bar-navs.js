@@ -64,10 +64,6 @@ export default [
         "name": "health insurance",
         sub_routes:[
           {
-            "name": "insurance registration",
-            "route_name": "insurance-registration",
-          },
-          {
             "name": "insurance companies",
             "route_name": "insurance-companies",
           },
@@ -94,16 +90,16 @@ export default [
       },
       {
         "name": "requested items",
-        "route_name": "requested-items",
+        "route_name": "store-requested-items",
       },
       {
         "name": "my history",
         "route_name": "my-store-history",
       },
-      {
-        "name": "lab store",
-        "route_name": "lab-store",
-      },
+      // {
+      //   "name": "lab store",
+      //   "route_name": "lab-store",
+      // },
     ]
   },
 
@@ -191,8 +187,8 @@ export default [
     "role": 'HR',
     "routes" : [
       {
-        "name": "register employee",
-        "route_name": "register-employee",
+        "name": "employees",
+        "route_name": "employees",
       },
     ]
   },

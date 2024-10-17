@@ -15,10 +15,13 @@ export const  b_heads =  {
 }
 
 export const  users_heads =  {
-  "fullName" : { "width": "150px" },
-  "userName" : { "width":  "120px"},
+  "userName" : { "width": "150px" },
+  "last_logged_in":{"width": '120px'},
   "role" : { "width":  "120px"},
   "phoneNumber" : { "width":  '120px'},
+  "active" :{ "width": "120px", bg:'cyan', tx:'#000' },
+  "email" : { "width":  "120px"},
+  "createdAt" : { "width":  '120px'},
 }
 
 
@@ -79,6 +82,18 @@ export const  prescroption_heads =  {
 }
 
 //employee
+export const  employee_heads =  {
+  "first_name" : { "width":"120px" },
+  "last_name" : { "width":  '120px'},
+  "gender" : { "width":  '120px'},
+  "email" : { "width":  '120px'},
+  "phone_number" : { "width":  '120px'},
+  "system_user" : { "width":  '120px'},
+  "has_share" : { "width":  '120px'},
+  "department":{"width":  '120px'},  
+  "createdBy":{"width": '120px'}
+}
+
 export const  attendance_heads =  {
   "shift" : { "width":"120px" },
   "enterAt" : { "width":  '120px'},
@@ -179,6 +194,27 @@ export const insurance_head = {
   "createdAt":  { "width":"120px" },
 }
 
+export const store_items_head = {
+  "item_name":  { "width":"120px" },
+  "item_type":  { "width":"120px" },
+  "quantity":   { "width":"120px" },
+  "createdAt":  { "width":"120px" },
+}
+
+export const store_requested_items_head = {
+  "store_item":  { "width":"120px" },
+  "requested_by":  { "width":"120px" },
+  "aprroved_by":   { "width":"120px" },
+  "status":  { "width":"120px" },
+  "comment":{"width": "120px" }
+}
+
+export const departments_head = {
+  "department_name":  { "width":"120px" },
+  "parent_reference":  { "width":"120px" },
+  "createdAt":{"width": "120px" }
+}
+
 export default { 
   a_heads,
   b_heads,
@@ -195,7 +231,11 @@ export default {
   deposite_head,
   pateints_heads,
   insurance_head,
+  store_items_head,
+  store_requested_items_head,
+  departments_head,
   // employee
+  employee_heads,
   attendance_heads,
   contract_heads,
   disciplinary_record_heads,

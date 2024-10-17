@@ -3,25 +3,26 @@
 @import '../../../style/global.scss';
 
 .container{
-    @include transition(onlytheme);
-    margin: 0 1rem;
-    padding: 1rem 10px;
-    background-color: var(--white);
-    color: var(--text-dark-gray);
-    height: 100vh;
+  @include transition(onlytheme);
+  margin: 0 1rem;
+  padding: 1rem 10px;
+  background-color: var(--white);
+  color: var(--text-dark-gray);
+  height: 100vh;
 }
+
 h4{
-    text-transform: capitalize;
-    color: var(--text-blue);
+  text-transform: capitalize;
+  color: var(--text-blue);
 }
 
 .info{
-    min-height: 30px;
-    height: inherit !important;
-    max-height: none !important;
-    &.err_space{
-        padding-bottom: 1.2rem; 
-    }
+  min-height: 30px;
+  height: inherit !important;
+  max-height: none !important;
+  &.err_space{
+      padding-bottom: 1.2rem; 
+  }
 }
 
 

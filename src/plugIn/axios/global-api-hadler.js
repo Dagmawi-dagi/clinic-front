@@ -2,7 +2,7 @@ import { AxiosInstance } from './instance';
 import { setAuth } from '../../util/work-with-token';
 import apiUrls from '../../assets/api-urls';
 // error handling
-import { global_apicall_error_handler } from '../../error handling/global_error_handler'
+import { global_apicall_feedback_handler } from '../../error handling/global_error_handler'
 
 // stores 
 import { use_stores_refs } from '../../composables/stores-ref'
@@ -18,7 +18,7 @@ export const global_apihandler =   async ( urlRef, options )=>{
     // global_apihandler('event-getlist',options).then(()=>{  })
 
   // urlRef ~ urlRef event-getlist
-  const { url,method,handle_api_err_globally } = apiUrls[urlRef.split('-')[0]][urlRef.split('-')[1]]
+  const { url,method,globally_res_feedback} = apiUrls[urlRef.split('-')[0]][urlRef.split('-')[1]]
 
   // here if the GlobalApiHandler Call was from any of the stores 
   // we want to handle every thing on here (the storage of the response Obj and the status of that specific api caller method )
@@ -72,11 +72,13 @@ export const global_apihandler =   async ( urlRef, options )=>{
       EndApiWithSuc(statusholder_obj_id,store_apicalls_statusholder_obj);
     }
     // if the Apicall was not form store the res will be returned  ... so can be used from there 
+    if ( globally_res_feedback.succ_msg ) global_apicall_feedback_handler().success(globally_res_feedback.succ_msg) 
     return res
   } catch (err) {
 
     if( options.store ) EndApiWithErr(statusholder_obj_id,store_apicalls_statusholder_obj,err);
-    if ( handle_api_err_globally ) global_apicall_error_handler(err)
+    if ( globally_res_feedback.err ) global_apicall_feedback_handler().err(err) 
+
     // if the Apicall was not form store the resErr will be returned ... so can be used from there
     return err.response
   }

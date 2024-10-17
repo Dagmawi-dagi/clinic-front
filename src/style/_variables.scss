@@ -21,6 +21,7 @@ $border-light-blue:#C1DEFF;
 // other colors
 $light-gray: #707070;
 $green: #9CFF2E;
+$modal: #000000b3;
 //---------------------------------//
 
 //--------- measurments -----------//
@@ -30,7 +31,7 @@ $header-height: 60px;
 // Z-index
 $zindex-side-nav: 99;
 $zindex-top-nav: 9;
-$zindex-modal: 9;
+$zindex-modal: 999999999999;
 //----------------------------------//
 
 :root {

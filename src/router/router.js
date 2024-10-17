@@ -12,8 +12,9 @@ const router = createRouter({
     if (savedPosition) return  savedPosition
     return { top: 0, left: 0 }
   },
-  history: createWebHistory(import.meta.env.BASE_URL),
 
+  history: createWebHistory(import.meta.env.BASE_URL),
+  
   // // things to pass to a route meta
   //   meta :{
   //     title: 'login', 
@@ -65,6 +66,26 @@ const router = createRouter({
       },
       component : ()=>import ('../views/user/user-profile.vue'),
     },
+    {
+      path:'/users',
+      name:'users',
+      meta:{ 
+        title: 'users',
+        auth: true 
+      },
+      component : ()=>import ('../views/user/users_.vue'),
+    },
+    {
+      path:'/user/create',
+      name:'create-user',
+      meta:{ 
+        title: 'sign-up',
+        auth: true 
+      },
+      component : ()=>import ('../views/user/create_.vue'),
+    },
+
+    
     //---------------END of user Routes ------------------//
     {
       path:'/',
@@ -74,6 +95,7 @@ const router = createRouter({
         auth: true
       },
       component : ()=>import ('../views/test_.vue'),
+      redirect: '/pateint/register'
     },
     // ----------------------- pateint routes ---------------------------//
     {
@@ -113,17 +135,6 @@ const router = createRouter({
       component : ()=>import ('../views/pateint/pateints_.vue'),
     },
 
-    // ---------------------End of pateint routes -------------------//
-
-    {
-      path:'/employee/:id',
-      name:'employee',
-      meta:{ 
-        title: 'employee', 
-        auth: true 
-      },
-      component : ()=>import ('../views/employee/employee_.vue'),
-    },
     {
       path:'/invoices',
       name:'invoices-queue',
@@ -205,6 +216,90 @@ const router = createRouter({
         auth: true,
       },
       component : ()=>import ('../views/finance/insurance-companies.vue'),
+    },
+
+    {
+      path:'/store-add-item',
+      name:'store-add',
+      meta:{ 
+        title: 'store-add-item', 
+        auth: true,
+      },
+      component : ()=>import ('../views/store/add_item.vue'),
+    },
+    {
+      path:'/store-items',
+      name:'store-items',
+      meta:{ 
+        title: 'store-items', 
+        auth: true,
+      },
+      component : ()=>import ('../views/store/items_.vue'),
+    },
+    {
+      path:'/store-requested-items',
+      name:'store-requested-items',
+      meta:{ 
+        title: 'store-requested-items', 
+        auth: true,
+      },
+      component : ()=>import ('../views/store/requested_tems.vue'),
+    },
+    {
+      path:'/my-store-history',
+      name:'my-store-history',
+      meta:{ 
+        title: 'store-requested-items', 
+        auth: true,
+      },
+      component : ()=>import ('../views/store/my_store_history.vue'),
+    },
+    {
+      path:'/departments',
+      name:'departments',
+      meta:{ 
+        title: 'departments', 
+        auth: true,
+      },
+      component : ()=>import ('../views/departments_.vue.vue'),
+    },
+    {
+      path:'/create-department',
+      name:'create-department',
+      meta:{ 
+        title: 'create-department', 
+        auth: true,
+      },
+      component : ()=>import ('../views/department/create-department.vue'),
+    },
+
+    {
+      path:'/employee/:id',
+      name:'employee',
+      meta:{ 
+        title: 'employee', 
+        auth: true 
+      },
+      component : ()=>import ('../views/employee/employee_.vue'),
+    },
+
+    {
+      path:'/employee/register',
+      name:'employee-register',
+      meta:{ 
+        title: 'employee', 
+        auth: true 
+      },
+      component : ()=>import ('../views/employee/register_employee.vue'),
+    },
+    {
+      path:'/employees',
+      name:'employees',
+      meta:{ 
+        title: 'employees', 
+        auth: true 
+      },
+      component : ()=>import ('../views/HR/employees_.vue'),
     },
 
     {

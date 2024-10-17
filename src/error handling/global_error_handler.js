@@ -1,10 +1,32 @@
-import { DialogToast } from 'v-dialogs'
-export const global_apicall_error_handler = (err)=>{
-  DialogToast(err.response.data.errMessage ?? err.message,{
-    messageType:'error',
-    closeButton:true,
-    placement:'top-right',
-    duration:1000*60,
-    customClass: 'global_error',
-  })
+import { DialogToast,DialogMessage } from 'v-dialogs'
+
+
+export const global_apicall_feedback_handler = ()=>{
+
+  const err = (err)=>{
+    DialogToast(err.response.data.errMessage ?? err.message,{
+      messageType:'error',
+      closeButton:true,
+      placement:'top-right',
+      duration:3000,
+      customClass: 'global_error',
+    })
+  }
+
+  const success = (msg)=>{
+    DialogMessage(`${msg}`,{ 
+      messageType: 'success',
+      icon:true,
+      placement:"top",
+      duration:3000,
+      customClass: 'global_success', 
+      closeButton:true,
+      pill:false
+    })
+  }
+
+  return {
+    err,
+    success
+  }
 }

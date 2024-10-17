@@ -1,40 +1,5 @@
 @import './variables';
 
-@mixin Modalcontainer() {
-  background-color: $light-gray;
-  display: flex;
-  align-items: center;
-
-  position: fixed;
-  top: calc($top-nav-height);
-  bottom: 0;
-  width: inherit;
-  height: calc(100dvh - $top-nav-height);
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-
-  z-index: $zindex-modal;
-  overflow: auto;
-}
-
-@mixin createContainer() {
-  @include flexbox($direction: column);
-  @include transition($prop: onlytheme);
-
-  color: var(--text-dark-gray);
-  background-color: var(--white);
-
-  width: min(500px, 50%);
-  min-width: min(310px, 90%);
-  min-height: 70%;
-
-  margin: auto;
-  padding: 2rem 0;
-
-  border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px;
-  overflow: auto;
-}
 
 
 @mixin button($bg-color, $text-color, $cssvar: false ) {

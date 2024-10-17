@@ -7,7 +7,6 @@ export const use_util_store = defineStore('util-store',()=>{
   // to tell any comp that the page routing is resolved 
   const route_resovled = ref(false)
 
-
   const { desktop,laptop } = use_break_point()
   
   const side_bar_open = ref( (desktop.value || laptop.value ) ? true:false  )
@@ -28,7 +27,7 @@ export const use_util_store = defineStore('util-store',()=>{
   const any_open_modal = ref({
     bool: false,
     id: '',
-    AnythingTopass: null
+    AnythingTopass: null // use this passed data on the mounted modal
   })
 
   const   global_vue_easy_lightbox = ref({
@@ -42,7 +41,6 @@ export const use_util_store = defineStore('util-store',()=>{
   const filter_obj = ref(null)  
   const search_string = ref(null)  
   const sort_obj = ref(null)  
-
 
   return{
     route_resovled,

@@ -25,6 +25,7 @@ onClickOutside(filterEl,()=>{filterDropdownOpen.value = false})
 <template>
   <div class="container" :size="size" >
     <slot></slot> <!--we can pass any thing to the list header as a slot(default slot)  -->
+    
 
     <div style="margin-left: auto;display: flex; gap: 1rem;">
       <div class="filter" ref="filterEl" v-if="filter_bool" >

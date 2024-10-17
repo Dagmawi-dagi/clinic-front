@@ -3,6 +3,7 @@
 import { insurance_head } from '../../assets/data_list/list_heads';
 // comps  
 import dataList from '../../components/features/data list/data_list.vue';
+import custom_btn_1 from '@/components/Reusable/button/custom_btn_1.vue';
 //composable
 import { use_apicalls_from_store } from '@/composables/store-apicalls';
 // router
@@ -52,9 +53,25 @@ apicall_from_store( 'insurance','insurance-getList',{ token: true, queryObj : { 
       >
       <template #list_filter_search>
         <h1 class="dataList_head">insurance companies</h1>
+        <custom_btn_1   class="custom_btn_1"
+        :spinner="{color: '#fff',width: '1rem'}" 
+        :loading_state="false" 
+        :succMsg="false"
+        @btn="$router.push({name:'insurance-registration'})"
+        > 
+        register company
+        </custom_btn_1>
       </template>
       </dataList>
 </template>
 <style lang="scss" scoped>
 @import '../../style/global.scss';
+.custom_btn_1{
+  margin-left: 1rem;
+  :deep(.btn){
+    margin-bottom: 0;
+    padding: 2px 10px;
+    font-size: 96%;
+  }
+}
 </style>

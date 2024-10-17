@@ -1,6 +1,7 @@
 <script setup>
 // comps
 import mainContainer from './components/main/main-container.vue';
+import globalModal from './components/modal/modal_container.vue';
 // composables
 import { use_set_theme } from './composables/set-theme';
 import { use_light_box } from './composables/light-box';
@@ -10,7 +11,7 @@ import { use_apicalls_from_store } from './composables/store-apicalls';
 import { use_util_store } from './stores/util-store';
 import { storeToRefs } from 'pinia';
 
-const { global_vue_easy_lightbox } = storeToRefs(use_util_store())
+const { global_vue_easy_lightbox,any_open_modal } = storeToRefs(use_util_store())
 
 const { onhide,imgIndex } = use_light_box()
 const { init_stores } = use_stores_refs()
@@ -24,6 +25,7 @@ apicall_from_store('auth','auth-getProfile',{token: true, onSucSaveTheJsonOn : '
 
 <template>
   <mainContainer/>
+  <globalModal v-if="any_open_modal.bool"/>
   <vue-easy-lightbox 
     :index="imgIndex" 
     @hide="onhide"

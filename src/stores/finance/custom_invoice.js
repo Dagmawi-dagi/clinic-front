@@ -9,11 +9,17 @@ export const use_custom_invoice_store= defineStore('custom_invoice-store',()=>{
   const custom_invoice_store_apicalls_statusholder_obj = ref({})
   const custom_invoices = ref([])
 
+  const page = ref(1)
+  const perPage = ref(10)
+
   return {
     api_calls,
     custom_invoice_store_apicalls_statusholder_obj,
     
-    custom_invoices
+    custom_invoices,
+
+    page,
+    perPage,
   }
 
 })

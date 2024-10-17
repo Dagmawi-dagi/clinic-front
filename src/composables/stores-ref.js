@@ -2,12 +2,14 @@
 import { use_user_store } from '../stores/user';
 import { use_auth_store } from '../stores/auth';
 import { use_pateint_store } from '../stores/pateint/pateint';
-import { use_employee_store } from '../stores/employee/employee';
 import { use_custom_invoice_store } from '../stores/finance/custom_invoice';
 import { use_invoice_store } from '../stores/finance/invoice';
 import { use_credit_store } from '../stores/finance/credit';
 import { use_deposite_store } from '../stores/finance/deposite';
 import { use_insurance_store } from '../stores/finance/insurance';
+import { use_store_store } from '@/stores/store_/store';
+import { use_department_store } from '@/stores/department';
+import { use_employee_store } from '@/stores/employee/employee';
 
 export const use_stores_refs = ()=>{
   // stores reference 
@@ -16,12 +18,14 @@ export const use_stores_refs = ()=>{
     'user': use_user_store(),
     'auth': use_auth_store(),
     'pateint': use_pateint_store(),
-    'employee': use_employee_store(),
     'invoice': use_invoice_store(),
     'credit': use_credit_store(),
     'deposite': use_deposite_store(),
     'insurance':use_insurance_store(),
-    'custom_invoice':use_custom_invoice_store()
+    'custom_invoice':use_custom_invoice_store(),
+    'store':use_store_store(),
+    'department': use_department_store(),
+    'employee': use_employee_store()
   }
   
   // init the stores ApiCalls status holder reactive Object

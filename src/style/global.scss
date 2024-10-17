@@ -4,12 +4,11 @@
 .route-container{
   @include transition($prop: 'onlytheme');
   margin: 0 1rem;
-  padding: 1rem 10px;
+  padding: 10px 10px;
   background-color: var(--white);
   color: var(--text-dark-gray);
   min-height: 100%;
 }
-
 
 #da-tooltip{
   position: absolute;
@@ -150,6 +149,43 @@
       background-color: var(--light-blue);
       color: var( --text-dark-gray);
       border: 1px solid var(--border-light-blue);
+  }
+}
+
+
+.selectInput{
+  @include transition(onlytheme);
+  margin-left: 0;
+
+  width: min(90%,400px);
+
+
+  :deep(.dropdownInput){
+      background-color: var(--light-blue);
+      color: var( --text-dark-gray);
+      border: 1px solid var(--border-light-blue);
+      padding:  5px 10px;
+      @include transition($prop: (border-color: .2s));
+  }
+
+  :deep(.dropdownInputItems-container){
+      @include transition($prop: (border-color: .2s));
+      // background-color: var(--light-blue);
+      // color: var( --text-dark-gray);
+      border: 1px solid var(--border-light-blue);
+  }
+
+  :deep(.dropdownInput-items){
+      background-color: var(--white);
+      color: var( --text-dark-gray);
+      @include transition($prop: (border-color: .2s));
+      &:hover{
+          background-color: var(--light-blue);
+      }
+  }  
+
+  :deep(.err-msg){
+      font-size: 12px;
   }
 }
 //

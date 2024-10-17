@@ -5,9 +5,7 @@ import custom_btn_1 from '../Reusable/button/custom_btn_1.vue';
 //vue 
 import { ref,watch } from 'vue';
 
-const form = ref({
-    discount_form:{}
-})
+const form = ref({ discount_form:{}})
 const emits = defineEmits(['discount-form'])
 const props =  defineProps({ submit_dyn: Number})
 // under the input we need space for displaying validation errors for the inputs
