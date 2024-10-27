@@ -303,6 +303,16 @@ const router = createRouter({
     },
 
     {
+      path:'/attendances',
+      name:'attendances',
+      meta:{ 
+        title: 'attendance', 
+        auth: true 
+      },
+      component : ()=>import ('../views/employee/attendance_.vue'),
+    },
+
+    {
       path:'/:catchAll(.*)',
       name:'page-not-found',
       meta: {

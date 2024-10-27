@@ -147,14 +147,15 @@
       bottom: 2px;
       z-index: 99999;
       padding: 3px 10px;
-      .btn{
-        &{
-          border-radius: 0px;
-          padding: 0px;
-          min-width: 40px;
-          margin-top: 0;
-        }
+      :deep(.btn){
+        border-radius: 2px;
+        padding: 0px;
+        min-width: 40px;
+        margin-top: 0;
+        height: 1rem;
+        margin: 0;
       }
+    
     }
 
   }

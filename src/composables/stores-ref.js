@@ -10,22 +10,28 @@ import { use_insurance_store } from '../stores/finance/insurance';
 import { use_store_store } from '@/stores/store_/store';
 import { use_department_store } from '@/stores/department';
 import { use_employee_store } from '@/stores/employee/employee';
+import { use_attendance_store } from '@/stores/employee/attendace';
 
 export const use_stores_refs = ()=>{
   // stores reference 
   // you must add any newly created store after created
   const stores = {
-    'user': use_user_store(),
+    // user
     'auth': use_auth_store(),
+    'user': use_user_store(),
+    // pateint
     'pateint': use_pateint_store(),
+    // finance
     'invoice': use_invoice_store(),
     'credit': use_credit_store(),
     'deposite': use_deposite_store(),
     'insurance':use_insurance_store(),
     'custom_invoice':use_custom_invoice_store(),
     'store':use_store_store(),
+    // employee
     'department': use_department_store(),
-    'employee': use_employee_store()
+    'employee': use_employee_store(),
+    'attendance' : use_attendance_store()
   }
   
   // init the stores ApiCalls status holder reactive Object

@@ -215,6 +215,16 @@ export const departments_head = {
   "createdAt":{"width": "120px" }
 }
 
+export const attendance_head = {
+  "employee_archive":  { "width":"120px" },
+  "shift":  { "width":"120px" },
+  "enterAt":  { "width":"120px" },
+  "leaveAt":  { "width":"120px" },
+  "seenBy":  { "width":"120px" },
+  "createdBy":{"width": "120px" },
+  "createdAt":{"width": "120px" }
+}
+
 export default { 
   a_heads,
   b_heads,
@@ -235,6 +245,7 @@ export default {
   store_requested_items_head,
   departments_head,
   // employee
+  attendance_head,
   employee_heads,
   attendance_heads,
   contract_heads,

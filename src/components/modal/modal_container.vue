@@ -2,6 +2,7 @@
 // <!-- here all the modal components we have for the app and render the conditionally using the util store -->
 // modal comps
 import modala from './modal-a.vue';
+import invoice_payment from './invoice_payment.vue';
 // store
 import { use_util_store } from '@/stores/util-store';
 import { storeToRefs } from 'pinia';
@@ -19,6 +20,7 @@ const { any_open_modal } = storeToRefs( use_util_store() )
     </span>
 
     <modala v-if="any_open_modal.id === 'modala'"/>
+    <invoice_payment v-if="any_open_modal.id === 'invoicepayment'"  :invoice="any_open_modal.AnythingTopass.invoice"/>
     
   </div>
 </template>

@@ -5,31 +5,18 @@ import { pateints_heads } from '../../assets/data_list/list_heads';
 import dataList from '../../components/features/data list/data_list.vue';
 //composable
 import { use_apicalls_from_store } from '@/composables/store-apicalls';
-// router
-import { useRoute } from 'vue-router';
 // store
 import { use_pateint_store } from '../../stores/pateint/pateint'
 import { storeToRefs } from 'pinia';
 
-const { pateints } =  storeToRefs(use_pateint_store());
+const { pateints,page,perPage } =  storeToRefs(use_pateint_store());
 const { apicall_from_store,apicall_from_store_loading } = use_apicalls_from_store();
-const route = useRoute();
 
-const filter_search  = ()=>{
-  console.log('filter_search');
-}
-const util  = (evt)=>{
-  console.log('util',evt);
-}
-const raw  = ()=>{
-  console.log('raw');
-}
-const raw_item  = ()=>{
-  console.log('raw_item');
-}
+const filter_search  = ()=>{ console.log('filter_search')}
+const util  = (evt)=>{ console.log('util',evt);}
+const raw_item  = ()=>{ console.log('raw_item');}
 // handling on reload based on the route queary parametart
-apicall_from_store( 'pateint','pateint-searchPateint',{ token: true, queryObj : { ...route.query }, onSucSaveTheJsonOn: 'pateints'})
-
+apicall_from_store( 'pateint','pateint-searchPateint',{ token: true, queryObj : { perPage:perPage.value, page:page.value   , populate: 'pateint_archive' }, onSucSaveTheJsonOn: 'pateints'} )
 </script>
 <template>
     <dataList class="data_list"
@@ -42,12 +29,12 @@ apicall_from_store( 'pateint','pateint-searchPateint',{ token: true, queryObj : 
 
       :list_filter_search="{size:'lg',filter_bool: true,filterArray:[],search_bool:false}"
       :list_head="{size:'lg',heads:pateints_heads}"
-      :list_raw="{size:'lg',resize:true,heads:pateints_heads,utils:['a','b','c']}"
+      :list_raw="{size:'lg',resize:true,heads:pateints_heads,utils:['aa','b','c']}"
 
       @filter="filter_search"  
       @search="filter_search"
       @util="util"
-      @raw="raw"
+      @raw="$router.push({name: 'pateint',params: {id: $event.pateint_archive._id}})"
       @raw_item="raw_item"
       >
       <template #list_filter_search>

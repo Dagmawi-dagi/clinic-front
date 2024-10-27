@@ -1,7 +1,7 @@
 @import '../../../style/variables';
 @import '../../../style/mixins';
 
-.add-store-item-container{
+.inner_container{
     background-color: var(--white);
     color: var(--text-dark-gray);
     min-width: min(900px,90%);

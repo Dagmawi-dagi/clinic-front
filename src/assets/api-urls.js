@@ -12,6 +12,7 @@ export default  {
   },
   "user":{
     "getList": {url:"/user/users",method: 'get',globally_res_feedback:{ err:true}},
+    "createUser":{url:"/user/create",method: 'post',globally_res_feedback:{ err:true,succ_msg: 'employee-registered successfully'}},
   },
   "pateint": {
     "searchPateint": {url:"/pateint/search",method: 'get',globally_res_feedback:{ err:true}},
@@ -34,7 +35,7 @@ export default  {
   "insurance":{
     "create": {url:"/insurance",method: 'post'},
     "getList": {url:"/insurance",method: 'get'},
-    "get_insurance_invoices": {url:"/insurance/invoices",method: 'get'},
+    "get_insurance_invoices": {url:"/insurance/invoices?populate=invoices",method: 'get'},
   },
   "store":{
     "create": {url:"/store",method: 'post'},
@@ -48,6 +49,9 @@ export default  {
   "employee":{
     "getList": {url:"/employee",method: 'get',globally_res_feedback:{ err:true}},
     "register": {url:"/employee/register",method: 'post',globally_res_feedback:{ succ_msg: 'employee-registered successfully'}},
+  },
+  "attendance":{
+    "getList": {url:"/attendance",method: 'get',globally_res_feedback:{ err:true}},
   }
 }
 

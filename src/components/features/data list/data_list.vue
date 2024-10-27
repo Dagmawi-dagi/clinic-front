@@ -54,7 +54,7 @@ const data_list_utils_dropdown_open = ref(null)
 
     <transition-group tag="div" name="list" :style="{margin:raws_container_margin}" >
         <template  v-for="(item,i) in list_items" :key="i"  >
-            <list-raw 
+            <listRaw 
             :resize="list_raw.resize"
             :size="list_raw.size"
             :list_head="list_raw.heads"

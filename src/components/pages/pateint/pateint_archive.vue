@@ -4,6 +4,15 @@ import listHeads from '../../../assets/data_list/list_heads'
 //comps
 import data_list from '../../features/data list/data_list.vue';
 import personalData from '../../pateint/personal-data.vue';
+// composables
+import { use_apicalls_from_store } from '@/composables/store-apicalls';
+// store
+import { use_util_store } from '@/stores/util-store';
+import { storeToRefs } from 'pinia';
+
+const { any_open_modal } = storeToRefs( use_util_store() )
+
+const { apicall_from_store } = use_apicalls_from_store()
 
 defineProps({
   pateint_archive: Object
@@ -13,16 +22,23 @@ const filter_search  = ()=>{
   console.log('filter_search');
 }
 
-const util  = (evt)=>{
-  console.log('util',evt);
-}
-
 const raw  = ()=>{
   console.log('raw');
 }
 
 const raw_item  = ()=>{
   console.log('raw_item');
+}
+
+
+const util  = (evt,identifier)=>{
+ // ----------invoices dataList utils---------//
+  if(identifier === 'invoices' && evt.util_name === 'pay' ){
+    any_open_modal.value.bool = true
+    any_open_modal.value.id = 'invoicepayment'
+    any_open_modal.value.AnythingTopass = {invoice:evt.data}
+  }
+
 }
 
 </script>
@@ -97,11 +113,11 @@ const raw_item  = ()=>{
 
         :list_filter_search="{size:'sm',filter_bool: false,filterArray:[],search_bool: false}"
         :list_head="{size:'sm',heads:listHeads.invoice_head}"
-        :list_raw="{size:'sm',resize:false,heads:listHeads.invoice_head,utils:['a','b','c']}"
+        :list_raw="{size:'sm',resize:false,heads:listHeads.invoice_head,utils:['pay','credit','pass']}"
 
         @filter="filter_search"  
         @search="filter_search"
-        @util="util"
+        @util="util($event,'invoices')"
         @raw="raw"
         @raw_item="raw_item"
       >

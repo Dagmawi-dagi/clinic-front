@@ -178,7 +178,7 @@ export default [
 
       {
         "name": "attendance",
-        "route_name": "attendance",
+        "route_name": "attendances",
       },
     ]
   },

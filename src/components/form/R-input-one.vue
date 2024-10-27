@@ -9,6 +9,10 @@ import { watch,ref,onMounted } from 'vue';
 const emits = defineEmits(['inputVal'])
 const props = defineProps({
   id: String,
+  disabled: {
+    type: Boolean,
+    default: false
+  },
   type: String,
   placeholder: String,
   label:String,
@@ -47,7 +51,7 @@ watch(()=> props.resetVal ,()=>{
   <div class="inputContainer" :id='`_${id}`' >
     <dir class="label-container" :class="{side: labelDisplay === 'inline', stack: labelDisplay === 'block' }" >
       <label :for="`__${id}`" v-if="label"> {{ label }} </label>
-      <input :type="type"  :id='`__${id}`' :placeholder="placeholder" v-model="userInput"  @blur="onblur">
+      <input :disabled="disabled" :type="type"  :id='`__${id}`' :placeholder="placeholder" v-model="userInput"  @blur="onblur">
     </dir>
 
     <errDisplay  

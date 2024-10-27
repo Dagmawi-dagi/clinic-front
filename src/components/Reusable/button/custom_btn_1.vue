@@ -28,10 +28,7 @@ defineProps({
 @import '../../../style/global.scss';
 .btn{
   margin-bottom: 10px;
-  &{
-    @include flexbox();
-    gap: 7px;
-  }
+ 
   &:hover {
     filter: brightness(120%);
   }
@@ -40,6 +37,10 @@ defineProps({
   }
   &{
     @include button($bg-color:darken($color: $light-blue, $amount: 35), $text-color:white,$cssvar:false);
+  }
+  &{
+    @include flexbox();
+    gap: 7px;
   }
 }
 </style>

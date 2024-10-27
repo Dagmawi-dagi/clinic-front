@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <div class="add-store-item-container">
+  <div class="inner_container">
     modalAddStoreItem
   </div>
 </template>

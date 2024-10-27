@@ -19,7 +19,7 @@ watch(()=>props.onSubmitDyn ,()=>{ emits('inputVal',{err:false ,  userInput:user
 
 <template>
   <div class="inputContainer" :id='`_${id}`'>
-    <p>{{ legend }}:</p>
+    <p>{{ legend }}</p>
     <div class="custom-radio-container"  v-for="(option, i) in radioOptions" :key="i">
       <input type="radio" :id="`radio${i}${option}`" :name="inputname" :value="option" v-model="userInput"  @change="$emit('inputVal',{err:false ,userInput : $event.target.value})" >
       <label :for="`radio${i}${option}`">{{ option }}</label>

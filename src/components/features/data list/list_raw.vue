@@ -74,12 +74,12 @@ useResizeObserver(list_raw_el_container, (entries) => {
       </template>
     </div>
 
-    <span class="util" @click="emits('utils_toggler')"/>
-    <div class="dropdown" v-if="utils_dropdown_open">
+    <span class="util" @click="emits('utils_toggler')"  v-if="utils.length >0" />
+    <div class="dropdown" v-if="utils_dropdown_open && utils.length >0"> 
       <custom_btn_1 v-for="(util,i) in utils " :key="i" 
       :spinner="{color: '#fff',width: '14px'}"
-      :loading_state="true"
-      @btn="emits('util',{ util_name:util })"
+      :loading_state="false"
+      @btn="emits('util',{ util_name:util,data: raw_items_object })"
       >{{ util }}</custom_btn_1>
     </div>
 
