@@ -3,6 +3,7 @@
 import topNav from '../Nav/top-nav.vue';
 import sideBar from '../Nav/side-bar.vue';
 import scrollTop from '../Reusable/scroll-top.vue';
+import spinner_ from '../Reusable/spinner_.vue';
 // composables
 import { use_break_point } from '../../composables/break-point';
 // directives
@@ -42,14 +43,14 @@ const expand = computed(()=>{
           url_ref: $route.meta.other_info?.infinit_scroll.url_ref, 
           onSucSaveTheJsonOn: $route.meta.other_info?.infinit_scroll.onSucSaveTheJsonOn, 
           distance: $route.meta.other_info?.infinit_scroll.distance,
-          queryObj_ref: $route.meta.other_info?.infinit_scroll.queryObj_ref,
           router: $router, // for some reason
           route: $route, // for some reason
         }"
         >
         <RouterView /> 
+        <!-- spinner -->
         <spinner_ v-if="$route.meta.other_info?.infinit_scroll && vInfinitScroll.infinitScrollLoading.value" 
-          style="margin: 1rem auto;" 
+          style="margin: 1rem auto; margin-bottom: 1rem;" 
           :color="'var(--dark-red)'" 
           :width="'2.2rem'"   
         />

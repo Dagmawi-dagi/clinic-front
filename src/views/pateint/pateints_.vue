@@ -5,6 +5,8 @@ import { pateints_heads } from '../../assets/data_list/list_heads';
 import dataList from '../../components/features/data list/data_list.vue';
 //composable
 import { use_apicalls_from_store } from '@/composables/store-apicalls';
+//router
+import { useRoute } from 'vue-router';
 // store
 import { use_pateint_store } from '../../stores/pateint/pateint'
 import { storeToRefs } from 'pinia';
@@ -16,7 +18,13 @@ const filter_search  = ()=>{ console.log('filter_search')}
 const util  = (evt)=>{ console.log('util',evt);}
 const raw_item  = ()=>{ console.log('raw_item');}
 // handling on reload based on the route queary parametart
-apicall_from_store( 'pateint','pateint-searchPateint',{ token: true, queryObj : { perPage:perPage.value, page:page.value   , populate: 'pateint_archive' }, onSucSaveTheJsonOn: 'pateints'} )
+
+apicall_from_store( 'pateint','pateint-searchPateint',{ 
+  token: true, 
+  queryObj : { perPage:perPage.value, page:page.value, ...useRoute().query, populate: 'pateint_archive' }, 
+  onSucSaveTheJsonOn: 'pateints'
+  })
+
 </script>
 <template>
     <dataList class="data_list"

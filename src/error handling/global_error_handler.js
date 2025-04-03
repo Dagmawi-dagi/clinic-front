@@ -1,5 +1,4 @@
-import { DialogToast,DialogMessage } from 'v-dialogs'
-
+import { DialogToast,DialogMessage } from 'v-dialogs';
 
 export const global_apicall_feedback_handler = ()=>{
 

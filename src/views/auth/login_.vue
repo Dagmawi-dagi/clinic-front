@@ -10,12 +10,13 @@ const { form,onSubmitDyn } = useUserInput(login)
 const { apicall_from_store,apicall_from_store_response,apicall_from_store_loading } = use_apicalls_from_store()
 
 function login (){ apicall_from_store('auth','auth-login',{ onSucSaveTheJsonOn: 'logged_in_user', data:form.value }) }
+
 </script>
 
 <template>
   <div  class="container">
     <div class="form-container">
-      <img src="/src/assets/clinic logo.png" alt="clinic logo" class="logo" loading="lazy" decoding="async">
+      <img src="/src/assets/pictures/clinic logo.png" alt="clinic logo" class="logo" loading="lazy" decoding="async">
       <R_input_one class="input" 
       :id="`${1}`"
       :type="'string'"  

@@ -32,7 +32,6 @@ const router = createRouter({
         //  infinit_scroll:{ // if the page has infinite scroll
         //     custom_el: String, //  if the el that the infinit directive expects is nor the RouterView Element
         //     urlRef: 'user-getList',
-        //     queryObj_ref: 'router' // what query object to usewith the url for the infinit_scroll
         //     store_ref: 'user',
         //     onSucSaveTheJsonOn: "users",
         //     distance: 20,
@@ -41,6 +40,16 @@ const router = createRouter({
   //   },
 
   routes: [
+    {
+      path:'/',
+      name:'home',
+      meta:{ 
+        title: 'home', 
+        auth: true
+      },
+      component : ()=>import ('../views/test_.vue'),
+      redirect: '/pateint/register'
+    },
 
     // -----------------user routes------------------------//
 
@@ -49,10 +58,6 @@ const router = createRouter({
       name:'login',
       meta:{ 
         title: 'login', 
-      },
-      beforeEnter:(to,from,next)=>{
-        if (window.localStorage.getItem('token') ) return next('/')
-        next()
       },
       component : ()=>import ('../views/auth/login_.vue'),
     },
@@ -87,16 +92,7 @@ const router = createRouter({
 
     
     //---------------END of user Routes ------------------//
-    {
-      path:'/',
-      name:'home',
-      meta:{ 
-        title: 'home', 
-        auth: true
-      },
-      component : ()=>import ('../views/test_.vue'),
-      redirect: '/pateint/register'
-    },
+    
     // ----------------------- pateint routes ---------------------------//
     {
       path:'/pateint/:id',
@@ -125,7 +121,6 @@ const router = createRouter({
         other_info:{
          infinit_scroll:{ // if the page has infinite scroll
             url_ref: 'pateint-searchPateint',
-            queryObj_ref: 'frontEnd_route',
             store_ref: 'pateint',
             onSucSaveTheJsonOn: "pateints",
             distance: 20,
@@ -144,7 +139,6 @@ const router = createRouter({
         other_info:{
           infinit_scroll:{ // if the page has infinite scroll
              url_ref: 'invoice-getList',
-             queryObj_ref: 'frontEnd_route',
              store_ref: 'invoice',
              onSucSaveTheJsonOn: "invoices",
              distance: 20,
@@ -162,7 +156,6 @@ const router = createRouter({
         other_info:{
           infinit_scroll:{ // if the page has infinite scroll
              url_ref: 'credit-getList',
-             queryObj_ref: 'frontEnd_route',
              store_ref: 'credit',
              onSucSaveTheJsonOn: "credits",
              distance: 20,
@@ -180,7 +173,6 @@ const router = createRouter({
         other_info:{
           infinit_scroll:{ // if the page has infinite scroll
              url_ref: 'deposite-getList',
-             queryObj_ref: 'frontEnd_route',
              store_ref: 'deposite',
              onSucSaveTheJsonOn: "deposites",
              distance: 20,
@@ -350,6 +342,5 @@ router.afterEach((to)=>{
   // end the progress bar
   progress_bar.done()
 })
-
 
 export default router

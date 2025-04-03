@@ -77,10 +77,11 @@ export const global_apihandler =   async ( urlRef, options )=>{
   } catch (err) {
 
     if( options.store ) EndApiWithErr(statusholder_obj_id,store_apicalls_statusholder_obj,err);
-    if ( globally_res_feedback?.err ) global_apicall_feedback_handler().err(err) 
+    if( globally_res_feedback?.err ) global_apicall_feedback_handler().err(err) 
 
     // if the Apicall was not form store the resErr will be returned ... so can be used from there
     return err.response
+
   }
 }
 

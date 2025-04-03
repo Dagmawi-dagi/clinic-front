@@ -21,6 +21,8 @@ export const vInfinitScroll = {
       }
       return el
     }
+  
+
 
     const { stores } = use_stores_refs()
     const { apicall_from_store } = use_apicalls_from_store()
@@ -34,23 +36,17 @@ export const vInfinitScroll = {
 
       vInfinitScroll.infinitScrollLoading.value = true
 
-      // the pagination datas 
+      // data for the pagination
       const store =  options.value.store_ref;
       const urlRef = options.value.url_ref;
       const onSucSaveTheJsonOn = options.value.onSucSaveTheJsonOn;
       const { page,perPage } =  storeToRefs (stores[store])
-
-      // using the queryObj_ref passed to the options add the query to the api call
-      const add_query = (queryObj_ref)=>{
-        if( queryObj_ref === 'frontEnd_route' ) return options.value.route.query
-        // add other queryObj_ref here as needeed like from local storage etc
-      }
-
+      
       await apicall_from_store( store,urlRef,{
         list: true,
         fresh:false, 
         more: true,  
-        queryObj :  { page: page.value++, perPage: perPage.value,...add_query(options.value.queryObj_ref)},
+        queryObj : { ...options.value.route.query, page:++page.value,perPage:perPage.value },
         onSucSaveTheJsonOn,
         token: true 
       })

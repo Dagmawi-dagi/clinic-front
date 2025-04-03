@@ -9,28 +9,28 @@ import { use_apicalls_from_store } from '@/composables/store-apicalls';
 import { useRouter } from 'vue-router';
 // store
 import { use_pateint_store } from '../../stores/pateint/pateint';
+import { use_util_store } from '../../stores/util-store';
 import { storeToRefs } from 'pinia';
 
 const router = useRouter();
 const { apicall_from_store,apicall_from_store_loading } = use_apicalls_from_store();
 const { onSubmitDyn,form } = useUserInput(search);
+const { router_view_container } = storeToRefs(use_util_store())
 const { page, perPage } = storeToRefs(use_pateint_store());
 
 function search() {
-  console.log(form.value);
+  page.value = 1 // every time we seach a new search param we reinit the page value to initial
+
   //  since any of the "form" values are not required remove the ones that Don't have any value
   Object.keys(form.value).forEach(key => { if (!form.value[key])  delete form.value[key] });
-  //  if there is no value in any of the form keys
-  if (Object.keys(form.value).length === 0) return;
-  apicall_from_store('pateint','pateint-searchPateint',{
-    token: true, 
-    list: true,
-    fresh:true, 
-    more: false,  
+  // scroll to Top on fresh search
+  router_view_container.value.scrollTop = 0;
+
+  apicall_from_store('pateint','pateint-searchPateint',{ token: true,list: true,fresh:true, more: false,  
     queryObj : { page: page.value, perPage: perPage.value,...form.value }, // send the search form as query object
     onSucSaveTheJsonOn: 'pateints',
   })
-  .then( () => {  router.push({name: "pateints", query: { ...form.value }})})
+  .then( () => { router.push({name: "pateints", query: { ...form.value }})})
 }
 </script>
 
@@ -38,7 +38,7 @@ function search() {
   <nav>
     <div class="container">
       <div class="company"  @click="$router.push('/')" >
-        <img src="/src/assets/clinic logo.png" class="logo">
+        <img src="/src/assets/pictures/clinic logo.png" class="logo">
         <span class="name">My Clinic</span>
       </div>
       <div class="search-container">
